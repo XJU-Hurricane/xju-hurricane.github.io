@@ -69,60 +69,81 @@
                 </div>
             </nav>
 
+            <div class="post-container">
+                <div class="post-detail gt-bg-theme-color-second">
+                    <article class="gt-post-content">
+                        <h2 class="post-title">测试</h2>
+                        <div class="post-info">
+                            <time class="post-time gt-c-content-color-first">
+                                · 2024-01-31 ·
+                            </time>
 
-            <div class="post-list-container">
-                <div class="post-inner">
-
-                    <div class="post gt-bg-theme-color-second">
-                        <div class="post-left">
-                            <div>
-
-                                <a href="/posts/20240131-1.html">
-                                    <span class="post-title gt-c-content-color-first">第一篇文章</span>
-                                </a>
-                            </div>
-                            <div class="gt-post-content post-abstract gt-c-content-color-second">
-                                <p>测试</p>
-
-                            </div>
-                            <div class="post-info">
-                                <time class="post-time gt-c-content-color-first">
-                                    发布于 · 2024-01-31 ·
-                                </time>
-
-                            </div>
                         </div>
-                    </div>
-
+                        <div class="post-content">
+                            <p>测试</p>
+                            <p>测试</p>
+                        </div>
+                    </article>
                 </div>
-            </div>
 
 
-            <div class="site-footer gt-c-content-color-first">
-                <div class="slogan gt-c-content-color-first">新疆大学飓风战队 - Hurricane</div>
-                <div class="social-container">
-
-
-                    <a href="https://github.com/XJU-Hurricane" target="_blank">
-                        <i class="fab fa-github gt-c-content-color-first"></i>
-                    </a>
-
-
-
+                <div class="next-post">
+                    <div class="next gt-c-content-color-first">下一篇</div>
+                    <a>没有了</a>
                 </div>
-                <div>
-                    Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                        href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a
-                            href="https://brick713.github.io/atom.xml" target="_blank">RSS</a></a>
-                </div>
-            </div>
 
-            <script>
-                hljs.initHighlightingOnLoad()
-            </script>
+                <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
 
-        </div>
+                <style>
+                    div#vcomments {
+                        width: 100%;
+                        max-width: 1000px;
+                        padding: 2.5%
+                    }
+                </style>
+
+
+                <div id="vcomments"></div>
+
+                <script>
+                    new Valine({
+                        el: '#vcomments',
+                        appId: 'BPVmDnJ3m7hNIrMMJze0YXAt-gzGzoHsz',
+                        appKey: '9VgKRlxWNsjLGNJsxQycFcRE',
+                        avatar: 'wavatar',
+                        pageSize: 10,
+                        recordIp: true,
+                        placeholder: '',
+                        visitor: true,
+                    });
+                </script>
+
+
+<div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">新疆大学飓风战队 - Hurricane</div>
+    <div class="social-container">
+
+
+        <a href="https://github.com/XJU-Hurricane" target="_blank">
+            <i class="fab fa-github gt-c-content-color-first"></i>
+        </a>
+
+
+
     </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+            href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a
+                href="https://brick713.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+</div>
+</div>
 </body>
 
 </html>
