@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh_CN" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Oop - XJU_Hurricane-docs</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">XJU_Hurricane-docs</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#c" class="nav-link">为什么使用C++</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>C语言是面向过程的语言，没有类、对象的概念。<strong>STM32是可以使用C++编程的。</strong></p>
+<p>有关C++的类如何使用，参见<a href="https://www.runoob.com/cplusplus/cpp-classes-objects.html">https://www.runoob.com/cplusplus/cpp-classes-objects.html</a>。</p>
+<h1 id="c">为什么使用C++</h1>
+<p>不使用类，如果只用纯C，有些东西就会显得很麻烦，比如PID，除了参数不一样其他都是一样的，但是仍然需要写<code>PID1_Init(), PID2_Init(), ..., PIDn_Init()</code>，这显得很麻烦。明明都是一类东西为什么不能简化一下呢。那么我就可以新建一个PID类：</p>
+<pre><code class="language-C++">/**
+ * @brief PID类, 可以为速度环, 也可以为角度环
+ *
+ */
+class PID_Class {
+   private:
+    float kp, ki, kd; /* pid三参数 */
+    ...
+   public:
+    PID_Class(float kp_p,
+              float ki_p,
+              float kd_p);
+    float pid_calc(float target_p, float measure_p);
+
+    ~PID_Class();
+};
+</code></pre>
+<p>使用只需要：</p>
+<pre><code class="language-C++">/* 创建一个PID_Class对象 */
+PID_Class speed_pid(1000.0f, 2.0f, 0.0f);
+PID_Class angle_pid(100.0f, 10.0f, 0.0f);
+/* 调用PID计算 */
+float angle_val = get_angle();
+float current_spd = angle_pid.pid_calc(1000.0f, angle_val);
+
+float speed_val = get_speed();
+float spd_out = speed_pid.pid_calc(current_spd, speed_val);
+set_speed(spd_out);
+</code></pre>
+<p>如果使用纯C语言：</p>
+<pre><code class="language-C">void PID_init1() // 初始化PID
+{
+    pid[1].Set_electricity = 0;
+    pid[1].Actual_electricity = 0;
+    pid[1].err = 0;
+    pid[1].err_last = 0;
+    pid[1].deadband = 0;
+    //      pid.max_err=0;
+    pid[1].electricity = 0;
+    pid[1].electricity_high_limit = 16384;
+    pid[1].electricity_low_limit = -16384;
+    pid[1].integral = 0;
+    pid[1].Kp = 15.5f; // 只有P时，且限制6000为5.4
+    pid[1].Ki = 0.0f;  // 最佳为1
+    pid[1].Kd = 1.9f;
+}
+short PID_realize1(short set_Setelectricity, short act_Setelectricity) // PID调试
+{
+    pid[1].Set_electricity = set_Setelectricity;
+    pid[1].Actual_electricity = act_Setelectricity;
+
+    pid[1].err = pid[1].Set_electricity - pid[1].Actual_electricity;
+
+    if ((pid[1].deadband != 0) &amp;&amp; (ABS(pid[1].err) &lt; pid[1].deadband)) // 如果误差在死区的范围内，则不需要再调试PID
+        return 0;
+
+    pid[1].integral += pid[1].err;
+    pid[1].electricity = pid[1].Kp * pid[1].err + pid[1].Ki * pid[1].integral + pid[1].Kd * (pid[1].err - pid[1].err_last); // PID公式
+    pid[1].err_last = pid[1].err;
+
+    if (pid[1].electricity &lt;= pid[1].electricity_high_limit &amp;&amp; pid[1].electricity &gt;= pid[1].electricity_low_limit)
+        return pid[1].electricity;
+    else if (pid[1].electricity &gt; pid[1].electricity_high_limit)
+        return pid[1].electricity_high_limit;
+    else if (pid[1].electricity &lt; pid[1].electricity_low_limit)
+        return pid[1].electricity_low_limit;
+    else
+        return 0;
+}
+void PID_ANGLE_init1()
+{
+    pid_angle[1].gaol_angle = 0;
+    pid_angle[1].act_angle = 0;
+    pid_angle[1].err = 0;
+    pid_angle[1].err_err = 0;
+    pid_angle[1].err_old = 0;
+    pid_angle[1].POUT = 0;
+    pid_angle[1].IOUT = 0;
+    pid_angle[1].DOUT = 0;
+    pid_angle[1].deadrange = 250;
+    pid_angle[1].OUT = 0;
+    pid_angle[1].P = 100.0f;
+    pid_angle[1].I = 0.001f;
+    pid_angle[1].D = 100.0f;
+    pid_angle[1].high_lim = 10000;
+    pid_angle[1].low_lim = -10000;
+}
+
+float PID_ANGLE_realize1(float gaol, float act) // 速度环
+{
+    pid_angle[1].gaol_angle = gaol;
+    pid_angle[1].act_angle = act;
+    pid_angle[1].err = pid_angle[1].gaol_angle - pid_angle[1].act_angle;
+    pid_angle[1].err_err = pid_angle[1].err - pid_angle[1].err_old;
+    pid_angle[1].POUT = pid_angle[1].P * pid_angle[1].err;
+    pid_angle[1].IOUT += pid_angle[1].I * pid_angle[1].err;
+    pid_angle[1].DOUT = pid_angle[1].D * pid_angle[1].err_err;
+    pid_angle[1].OUT = pid_angle[1].POUT + pid_angle[1].IOUT + pid_angle[1].DOUT;
+
+    pid_angle[1].err_old = pid_angle[1].err;
+    pid_angle[1].OUT = ((pid_angle[1].OUT &gt; pid_angle[1].high_lim) ? (pid_angle[1].high_lim) : ((pid_angle[1].OUT &lt; pid_angle[1].low_lim) ? (pid_angle[1].low_lim) : pid_angle[1].OUT));
+    if (ABS(pid_angle[1].err) &lt;= pid_angle[1].deadrange)
+    {
+        pid_angle[1].IOUT = 0;
+        pid_angle[1].OUT = 0;
+    }
+    return pid_angle[1].OUT;
+}
+PID_init1();
+PID_ANGLE_init1();
+
+short angle_val = get_angle();
+float current_spd = (float)PID_realize1(1000, angle_val);
+
+float speed_val = get_speed();
+float spd_out = PID_ANGLE_realize1(current_spd, speed_val);
+set_speed(spd_out);
+</code></pre>
+<p>C++就只用了27行代码，C语言用了87行，那个方便不用我多说了吧。而且C++相较于纯C更好维护。</p>
+<p>这里不是说你不能用C语言，引入C++的目的，一方面是想让大家了解面向对象编程，现如今大多数语言都是面向对象的语言，比如Python、Java、JavaScript等；另一方面，是为了简化代码，大家应该也都看到了，很多重复的东西是可以简化的。</p>
+<p>虽然C不支持面向对象，但他仍然是许多操作系统、底层软件的首选语言。Linux内核、Python解释器、QEMU虚拟器等底层软件都是使用纯C语言编写的。</p>
+<p>像GUI这类离计算机底层比较远的组件，如果使用纯C去编写就显得比较麻烦，所以上层开发比如安卓开发、网站开发中很少用C语言去编写。但如果要注重性能优化，可能就需要用C去写一些组件，甚至使用汇编，前端开发都有可能使用webAssembly(自行翻译)。</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

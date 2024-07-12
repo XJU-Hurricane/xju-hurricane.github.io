@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh_CN" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Arm toolchain - XJU_Hurricane-docs</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">XJU_Hurricane-docs</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#cmsis" class="nav-link">CMSIS对编译器的兼容</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#build" class="nav-link">Build基础概念</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#arm-compiler" class="nav-link">ARM Compiler</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#ac5" class="nav-link">安装AC5编译器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ac6" class="nav-link">升级AC6编译器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#eidearm-compiler" class="nav-link">EIDE配置ARM Compiler</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ac6_1" class="nav-link">AC6汇编器说明</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_1" class="nav-link">编译参数</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_3" class="nav-link">实际编译效果</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#debug" class="nav-link">调试Debug</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_4" class="nav-link">编译信息</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#ramrom-layout" class="nav-link">RAM/ROM Layout</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#startup" class="nav-link">startup启动文件分析</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#boot" class="nav-link">BOOT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>这里的内容可以提高自己嵌入式开发的水平。当然要是没兴趣看可以直接跳到下面的ARM Compiler的前四部分（安装AC5编译器、升级AC6编译器、EIDE配置ARM Compiler和AC6汇编器说明）。</p>
+<p>Template里的警告等级是比较高的，编译会有较多的警告，我只关闭了一些不太常用的警告。隐式类型转换、变量未初始化、变量没有使用、没有返回值、没有宏定义，都会报警告。<strong>警告是帮助我们检查代码潜在错误的，不要忽视这些警告</strong>，有时候无法解决的阴间问题往往就在这里。</p>
+<p>ARM Compiler Download：<a href="https://developer.arm.com/Tools%20and%20Software/Arm%20Compiler%20for%20Embedded">https://developer.arm.com/Tools%20and%20Software/Arm%20Compiler%20for%20Embedded</a></p>
+<p>AC5 Documents：<a href="https://developer.arm.com/documentation/dui0472/m">https://developer.arm.com/documentation/dui0472/m</a></p>
+<p>AC6 Documents &amp; Release Info: <a href="https://developer.arm.com/documentation/100748/0621?lang=en">https://developer.arm.com/documentation/100748/0621?lang=en</a></p>
+<p>ARM Embedded GNU Toolchain Download: <a href="https://developer.arm.com/downloads/-/gnu-rm">https://developer.arm.com/downloads/-/gnu-rm</a></p>
+<p>GCC Documents: <a href="https://gcc.gnu.org/onlinedocs/gcc-8.3.0/gcc/">https://gcc.gnu.org/onlinedocs/gcc-8.3.0/gcc/</a></p>
+<h1 id="cmsis">CMSIS对编译器的兼容</h1>
+<p>STM32之所以兼容各家的编译器，是因为CMSIS已经处理好了编译器的兼容。</p>
+<p>在ST的CMSIS中，有若干个针对编译器的头文件。在ST官方GitHub仓库/各系列的Cube包/Drivers/CMSIS中可以找到ST的CMSIS包。</p>
+<p><img alt="image.png" src="image.png" /></p>
+<p>可以看到，<code>cmsis_armcc.h</code>是AC5编译器头文件，<code>cmsis_armclang.h</code>是AC6编译器的头文件，<code>cmsis_gcc.h</code>是GCC编译器的头文件，<code>cmsis_iccarm.h</code>是IAR编译器的头文件。<code>cmsis_compiler.h</code>对编译器进行判断，然后包含不同的头文件。</p>
+<pre><code class="language-C">/*
+ * Arm Compiler 6 (armclang)
+ */
+#if defined (__ARMCC_VERSION) &amp;&amp; (__ARMCC_VERSION &gt;= 6010050)
+  #include &quot;cmsis_armclang.h&quot;
+
+/*
+ * GNU Compiler
+ */
+#elif defined ( __GNUC__ )
+  #include &quot;cmsis_gcc.h&quot;
+
+/*
+ * IAR Compiler
+ */
+#elif defined ( __ICCARM__ )
+  #include &lt;cmsis_iccarm.h&gt;
+  ...
+/*
+ * TI Arm Compiler
+ */
+#elif defined ( __TI_ARM__ )
+  #include &lt;cmsis_ccs.h&gt;
+   ...
+/*
+ * TASKING Compiler
+ */
+#elif defined ( __TASKING__ )
+  ...
+/*
+ * COSMIC Compiler
+ */
+#elif defined ( __CSMC__ )
+   #include &lt;cmsis_csm.h&gt;
+    ...
+/*
+ * Arm Compiler 4/5
+ */
+#elif   defined ( __CC_ARM )
+  #include &quot;cmsis_armcc.h&quot;
+
+#else
+  #error Unknown compiler.
+#endif
+</code></pre>
+<p>在Drivers/CMSIS/Device/ST/Source/Template中包含了各个编译器所对应的<code>startup</code>汇编文件。不同编译器的<code>startup</code>不通用（如果AC6使用<code>armasm</code>可以使用AC5的<code>startup</code>，但会抛出一个warning，让你使用新语法以使用新的汇编器）。</p>
+<h1 id="build">Build基础概念</h1>
+<p>Build是指将源代码通过编译、链接生成可执行程序的过程。</p>
+<p>而工具链（ToolChain）包括编译器（Compiler）、链接器（Linker）等。总的来说就是用一套工具把可以把人能看懂(maybe)的代码转换成机器能看懂的指令。</p>
+<p>下面的图是ARM工具链的运行流程，编译器把每个<code>.c, .cpp, .s</code>文件编译成目标文件<code>.o</code>，然后经过链接器将目标文件链接为可执行代码。</p>
+<p>STM32有一个启动文件<code>startup</code>，这个文件定义了STM32一些最基本的东西，比如内存堆栈，中断向量等。因此需要一个汇编器<code>ASM</code>编译汇编文件。关于这个文件参见<a href="https://flowus.cn/cabfc358-ee18-4661-a58c-a421a05aef18#03c353cc-f7e2-4a5f-ac4e-7cc7e6f8616b">startup启动文件分析</a>。</p>
+<p><img alt="ARM工具链运行流程" src="image%201.png" />
+ARM工具链运行流程</p>
+<p>配置好工具链就可以不依赖Keil MDK开发。不局限于Windows，可以在MacOS，Linux上开发。Keil MDK只有Windows版本。</p>
+<p>STM32主流的工具链有ARMCC, ARMClang, IAR, GNU for arm。其实主流的C/C++工具链也就gcc, clang, msvc。gcc和clang都是开源的。msvc是微软家的东西，不可能开源。所以其他人想做编译器也只能从gcc和clang下手，又不可能像苹果那样招来Chris Lattner(llvm之父，clang就是基于llvm的)一样的大神。</p>
+<blockquote>
+<p>PS：Clang是编译器前端，负责预处理和IR代码生成，编译、链接、优化都是交给后端LLVM去处理。而GCC编译器是将预处理、编译在一个程序里处理。AC6也不是完全使用Clang编译，汇编代码如果使用armasm是交给gcc去处理。如果使用armclang，可能需要GNU语法。在最新Keil版本中armclang支持arm语法。</p>
+</blockquote>
+<p>ARMCC/Clang, IAR都是商业软件，不免费。GNU for arm是开源工具，商业免费。</p>
+<p>在单片机中，由于计算能力较低，因此有些函数、变量在内存当中的分配，链接器会提前做好，也就是说，某些函数和变量的地址是固定的。对于Cortex-M内核，工具链都会带一个PreFix，叫做<code>arm-none-eabi-</code>。eabi指的是<code>Embedded Application Binary Interface</code>。</p>
+<p>ABI是指Application Binary Interface，也就是二进制应用程序之间的一个接口。那么什么是二进制应用程序呢？Windows上就是我们熟知的exe（exe的全称叫做executable，可执行的），这个exe就是编译好的二进制程序，也就是它只有机器码，没有C语言或者其他语言的代码，因此叫做二进制。给你一个程序的C语言源代码，是不是要先编译才能运行，编译出来的这个东西就是二进制程序。那么Interface怎么理解呢？很简单，就是exe之间的互相调用。假如我要打开Windows的设置，那么我不可能把Windows的设置自己写一遍，肯定是调用Windows的一个东西来打开设置，调用的通道就是接口。我调用了这个接口，Windows就把设置打开了。</p>
+<blockquote>
+<p>PS: Windows下二进制程序除了exe，还有一类是dll，Dynamic Link Library，动态链接库。dll相较于exe它是一个库，而且可以多个进程共享。在Linux或类Unix上，dll就是so(Share Object)，原理类似。</p>
+</blockquote>
+<p>拿医院看病拿药为例。我是一个exe，医生也是一个exe，药店也是一个exe。我先去调用医生的接口，把我的症状作为参数传进去，医生返回一个药方；然后我再去药店把这个药方作为参数传进去，返回一堆药。我不可能自己给自己看病，因为我没有看病的程序，而医生有看病的程序，我们直接调用就行了，但是我看不到医生是怎么分析症状然后给出药方的，因为医生的程序是编译过的二进制文件，看不到源代码。</p>
+<p>那么还有一个东西叫做API(Applicaiton Programmable Interface)，它和ABI有什么区别呢？其实就是源代码和二进制文件的区别。API有点类似函数的调用，有函数名，参数列表；而ABI全部用的是机器码，是API的更底层实现罢了。</p>
+<p>但是对于大多数单片机来说，塞一个二进制程序都够呛，怎么能塞多个。所以对于单片机，就不需要ABI了。</p>
+<h1 id="arm-compiler">ARM Compiler</h1>
+<p>新的编译器有更多的feature，当然也可能会有更多的~~bug~~，不过还是建议使用最新的编译器。新版的编译器有更优的RAM/ROM优化，编译时间更短。而且AC6编译器是基于LLVM架构的，理论上优化会更好。</p>
+<p>目前ARM编译器最新的版本是ARM Compiler 6.21，发布于2023年10月11日。</p>
+<p>AC5编译器已经停止更新，最后版本是5.06，只支持到C99。因此不建议使用此编译器。建议将keil升级到最新版本（Keil MDK 5.39，AC6.21）。打开Project - Option for Target 'balabala'（魔法棒），Target选项卡，在Code Generation中可以选择编译器。</p>
+<p><img alt="image-20231022232145524.png" src="image-20231022232145524.png" /></p>
+<p>如果列表里有提示Missing，说明没有安装这个编译器，参照下面的方法安装。</p>
+<p>ARM Compiler的最新版本是AC6.21。Keil MDK5.38所带的ARM编译器是6.19。可以自行升级ARM编译器。Template仅在AC6编译器下可编译通过。</p>
+<h2 id="ac5">安装AC5编译器</h2>
+<p>Keil MDK从5.37版本开始就不自带AC5编译器，编译会提示丢失编译器。如果要使用AC5编译器编译代码，按照以下方式安装。</p>
+<ol>
+<li>
+<p>下载网盘里的“ARMCompiler506_b960.msi”，也可以去官网下载：<a href="https://developer.arm.com/downloads/view/ACOMP5">https://developer.arm.com/downloads/view/ACOMP5</a></p>
+</li>
+<li>
+<p>注意路径要选择Keil安装目录\ARM\ARMCC，然后一路Next</p>
+</li>
+</ol>
+<p><img alt="image.png" src="image%202.png" /></p>
+<ol>
+<li>安装完毕后，打开Keil，依次点击图中的序号，设置AC5编译器路径。注意第5步是上面选择的AC5编译器路径。</li>
+</ol>
+<p><img alt="image.png" src="image%203.png" /></p>
+<h2 id="ac6">升级AC6编译器</h2>
+<p>最新版Keil MDK 5.39（Update, Dec 2023）已经包含AC6.21，无需升级。</p>
+<p>Keil MDK 5.38所带的编译器版本是AC6.19，截至目前ARM Compiler最新版是6.21。可以按照下面的步骤升级。</p>
+<ol>
+<li>
+<p>下载网盘里的“Arm Compiler for Embedded 6.21.msi”，也可以去官网下载：<a href="https://developer.arm.com/Tools%20and%20Software/Arm%20Compiler%20for%20Embedded">https://developer.arm.com/Tools%20and%20Software/Arm%20Compiler%20for%20Embedded</a></p>
+</li>
+<li>
+<p>注意路径选择Keil安装目录\ARM\ARMCLANG，然后一路Next</p>
+</li>
+</ol>
+<p><img alt="image.png" src="image%204.png" /></p>
+<ol>
+<li>安装完毕后，如果Keil里显示V6.21就OK了。</li>
+</ol>
+<p><img alt="image.png" src="image%205.png" /></p>
+<h2 id="eidearm-compiler">EIDE配置ARM Compiler</h2>
+<p>EIDE需要指定编译器和Keil的路径才可以使用编译器。</p>
+<ol>
+<li>
+<p>点击侧边EIDE图标</p>
+</li>
+<li>
+<p>点击Configure Toolchain（如果没有点一下下面的Operations操作），输入armcc即可出现下面的几个选项</p>
+</li>
+</ol>
+<p><img alt="image.png" src="image%206.png" /></p>
+<ol>
+<li>
+<p>依次选择AC5的目录（不能选bin，在Keil安装目录\ARM\ARMCC）、AC6的目录（Keil安装目录\ARM\ARMCLANG）、Keil MDK路径（UV4.exe或者TOOLS.INI所在位置，UV4.exe在Keil安装目录\UV4\UV4.exe，TOOLS.INI在Keil安装目录下）。如果配置正确，应该有个对勾，如上图。如果显示×，说明配置错误，重新选择路径。</p>
+</li>
+<li>
+<p>选择Import Project导入一个Keil工程，然后在左下角依次点OK，点击Build按钮看编译是否正常。</p>
+</li>
+</ol>
+<p><img alt="image.png" src="image%207.png" /></p>
+<p>切换编译器如图所示：</p>
+<p><img alt="image.png" src="image%208.png" /></p>
+<h2 id="ac6_1">AC6汇编器说明</h2>
+<p>ARMCC需要ARM语法的汇编文件，ARMClang需要GNU语法的汇编文件。如果直接将AC5换成AC6编译无法通过。arm文件夹的startup汇编文件默认都是用的ARM语法，如果使用GNU语法需要自行修改路径使用gcc里的汇编文件。</p>
+<p>ARM语法的特点是注释以<code>;</code>开头，没有<code>.</code>打头的标签；GNU语法的特点是注释方式与C语言相同，使用<code>.xxx</code>作为标签。</p>
+<pre><code>ARM语法的汇编文件：
+Heap_Size       EQU     0x00004000
+
+                AREA    HEAP, NOINIT, READWRITE, ALIGN=3
+__heap_base
+Heap_Mem        SPACE   Heap_Size
+__heap_limit
+
+                PRESERVE8
+                THUMB
+
+
+; Vector Table Mapped to Address 0 at Reset
+                AREA    RESET, DATA, READONLY
+                EXPORT  __Vectors
+                EXPORT  __Vectors_End
+                EXPORT  __Vectors_Size
+*********************************************************************************
+GNU语法的汇编文件：
+    .section  .text.Reset_Handler
+  .weak  Reset_Handler
+  .type  Reset_Handler, %function
+Reset_Handler: 
+  ldr   sp, =_estack       /* set stack pointer */
+
+/* Call the clock system initialization function.*/
+  bl  SystemInit   
+
+/* Copy the data segment initializers from flash to SRAM */  
+  ldr r0, =_sdata
+  ldr r1, =_edata
+  ldr r2, =_sidata
+  movs r3, #0
+  b LoopCopyDataInit
+
+CopyDataInit:
+  ldr r4, [r2, r3]
+  str r4, [r0, r3]
+  adds r3, r3, #4
+</code></pre>
+<p>AC6提供了两个汇编器，arm-asm和arm-clang。arm-asm是从ARMCC中移植过来的汇编器，arm-clang是从LLVM中移植过来的汇编器。如果使用GNU语法编译ARM语法的汇编文件，会抛出非常多的错误：</p>
+<p><img alt="image.png" src="image%209.png" /></p>
+<p>如果切换完编译器后汇编文件报错，打开魔法棒 - Asm - Assembler Option中选择Auto Select。</p>
+<p><img alt="image.png" src="image%2010.png" /></p>
+<p>对于ARM Compiler6.11以下的版本，ARMClang不支持ARM语法的汇编文件，EIDE为了兼容性考虑没有提供armclang(Arm Syntax)选项。EIDE下面的方法配置</p>
+<p><img alt="image.png" src="image%2011.png" /></p>
+<p>如果使用arm-asm编译，会抛出一个<code>Warning: A1950W: The legacy armasm assembler is deprecated. Consider using the armclang integrated assembler instead.</code>意思意思就是考虑升级编译器，在汇编参数中输入<code>--diag_suppress=1950</code>可以禁用这个警告：</p>
+<p><strong>注意：抛出warning再考虑添加参数，Keil中armclang可以支持ARM语法。如果没有warning就加编译会报错</strong></p>
+<p><img alt="EIDE配置" src="image%2012.png" />
+EIDE配置</p>
+<p><img alt="Keil配置" src="image%2013.png" />
+Keil配置</p>
+<h2 id="_1">编译参数</h2>
+<p>打开Project - Option for Target 'balabala'（魔法棒），Target里编译器选择version 6或者V6.xx，C/C++(AC6)选项卡，这里可以配置AC6编译器的参数。</p>
+<p><img alt="image.png" src="image%2014.png" /></p>
+<p>这里也就说一下Keil中的配置，具体控制哪些参数参见上面的编译器文档。如果需要写Makefile或Makelist，需要知道控制的到底是哪些参数。</p>
+<p>更多信息点右下角Help查阅。</p>
+<h3 id="preprocessor-symbols">Preprocessor Symbols</h3>
+<p>控制<code>-D</code>参数。</p>
+<p>预处理。Define是宏定义，跟在代码里使用<code>#define</code>是一样的。这里的宏定义主要是针对CMSIS部分。<code>USE_HAL_DRIVERS</code>意思是使用HAL库，如果是使用HAL库则编译HAL库的代码。</p>
+<p>第二个，<code>STM32F429xx</code>是具体芯片的系列，ST的HAL库是针对F1,F4,H7这样整个芯片家族的，每个系列的外设也不一样。比如F407有6个串口，168M的工作主频；而F429有8个串口，180M工作主频，不能简单粗暴的把F429的代码烧录到F407中。因此需要定义芯片到底是什么系列的，从而定义芯片的外设资源。图中可以看到，我们芯片中的各种外设都定义在芯片系列的头文件中。</p>
+<p><img alt="image.png" src="image%2015.png" /></p>
+<p>这个地方也可以添加一些宏定义来指定特定的编译行为。比如要使用旧版HAL库的CAN代码，添加<code>HAL_CAN_LEGACY_MODULE_ENABLED</code>宏即可。</p>
+<h3 id="execute-only-code">Execute-only Code</h3>
+<p>控制<code>-mexecute-only</code>参数。</p>
+<p>是指将代码段放在ROM的XOM区域。这部分区域只能由CPU去执行，而不能用其他手段读取。开启可以保护固件不被窃取。</p>
+<p><img alt="image.png" src="image%2016.png" /></p>
+<h3 id="optimization">Optimization，优化等级</h3>
+<p>控制<code>-O</code>参数。</p>
+<p>可以通过它来减少代码体积或者提高运行效率。下面是ARM对优化选择的建议：</p>
+<table>
+<thead>
+<tr>
+<th>目的</th>
+<th>优化等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>更小的代码体积</td>
+<td>Oz, Omin</td>
+</tr>
+<tr>
+<td>更快的运行速度</td>
+<td>O2, O3, Ofast, Omax</td>
+</tr>
+<tr>
+<td>调试且没有代码冗余</td>
+<td>O1</td>
+</tr>
+<tr>
+<td>源代码与生成的汇编码对应</td>
+<td>O0（不优化）</td>
+</tr>
+<tr>
+<td>更短的构建时间</td>
+<td>O0（不优化）</td>
+</tr>
+<tr>
+<td>平衡代码体积和运行速度</td>
+<td>Os</td>
+</tr>
+</tbody>
+</table>
+<p>速度和空间要有所取舍，根据实际需求选择时间换空间还是空间换时间。</p>
+<p>O0：就是不优化，C代码什么样就转换成什么汇编代码。</p>
+<p>O1：相较于O0会启用内联函数，优化不使用的变量和函数。</p>
+<p>O2：相较于O1优化内联函数，优化循环语句（优化循环语句主要通过loop unrolling，循环展开），优化向量。</p>
+<p>loop unrolling循环展开是指将循环代码展开，比如下面代码：</p>
+<pre><code class="language-C">/* 不用循环展开 */
+for (int  i = 0; i &lt; 5; i++) {
+    printf(&quot;Hello&quot;);
+}
+/* 循环展开之后 */
+printf(&quot;Hello&quot;);
+printf(&quot;Hello&quot;);
+printf(&quot;Hello&quot;);
+printf(&quot;Hello&quot;);
+printf(&quot;Hello&quot;);
+</code></pre>
+<p>经过循环展开以后，少了一个变量<code>i</code>，而且也不需要判断循环条件，对于CPU来说可以减少资源开销。
+O3：相较于O2进一步优化内联函数，进一步循环展开，优化向量。</p>
+<p>Os：Os是为了更快的运行速度，从而牺牲空间。与O2，O3相近。相较于O3主要减少内联和循环展开。</p>
+<p>Oz：不使用LTO的前提下减小代码体积。以时间换空间。这个级别下会根据内联函数的调用次数判断是否使用内联。如果一个函数调用次数较少，内联比不内联的体积更小，那么才会使用内联。禁用循环展开，向量优化。<code>while</code>会取代<code>do while</code>。会启用Outline，也就是寻找编译以后相同的汇编代码，只存一次。</p>
+<p>Omin：和Oz相近，相较于Oz会启用LTO，删除没有使用的代码，优化内存访问。消除虚函数（C++）。</p>
+<p>Ofast：与O3相近，相较于O3可能会增加代码体积。</p>
+<p>Omax：最大程度优化，获得最快的运行速度。不会严格检查语法错误（参照Strict ANSI C）。</p>
+<p>以下面代码为例，看看O1相较于O0有什么区别：</p>
+<pre><code class="language-C">int test() {
+    int x = 10, y = 20;
+    int z;
+    z = x+y;
+    return 0;
+}
+</code></pre>
+<p>O0生成的汇编代码：</p>
+<pre><code>test:
+    .fnstart
+    .pad #12
+    sub     sp, sp, #12
+    mov     r0, #10
+    str     r0, [sp, #8]
+    mov     r0, #20
+    str     r0, [sp, #4]
+    ldr     r0, [sp, #8]
+    add     r0, r0, #20
+    str     r0, [sp]
+    mov     r0, #0
+    add     sp, sp, #12
+    bx      lr
+</code></pre>
+<p>首先将10存入，然后再将20存入，相加，最后返回。</p>
+<p>O1生成的汇编代码</p>
+<pre><code>test:
+    .fnstart
+    movs r0, #0
+    bx lr
+</code></pre>
+<p>直接将r0寄存器设置成0，然后返回。</p>
+<p>编译器发现<code>test</code>函数中的2-4行是没用的，直接优化。</p>
+<p>如果这时候我们单步调试，可能就看到从第1行直接跳到第5行，所以调试最好不开优化。</p>
+<h3 id="link-time-optimization-one-elf-section-per-function">Link-Time Optimization, One ELF Section per Function</h3>
+<p>这两个选项是针对链接器的优化。</p>
+<p>Link-Time Optimization, 链接时优化：控制<code>-flto</code>参数。在链接的时候可以做许多优化。启用LTO以后链接器会对整个程序分析是否有可以内联的、有相同的代码可以优化的、模块里有没用的函数或者变量的，然后统统优化掉。启用LTO以后会使链接时间变长。</p>
+<p>One ELF Section per Function, 控制<code>-function-sections</code>参数。每个函数一个ELF段：</p>
+<p>MDK对这个选项的解释：</p>
+<blockquote>
+<p>The One ELF Section per Function option tells the compiler to put all functions into their own individual ELF sections. This allows the linker to remove unused functions.
+An ELF code section typically contains the code for a number of functions. The linker is normally only able to remove unused ELF sections, not unused functions. An ELF section can only be removed if all its contents are unused. Therefore, splitting each function into its own ELF section allows the compiler to easily identify which ones are unused, and remove them.
+Selecting this option increases the time required to compile your code, but results in improved performance.</p>
+</blockquote>
+<p>也就是说，每当编译器编一个函数时，会把他放到ELF段里。当链接器去链接时，可以发现那些函数没有使用，然后移除。</p>
+<h3 id="warnings-plain-char-is-signed-language-cc">Warnings, Plain Char is Signed, Language C/C++</h3>
+<p>点开Warnings下拉框可以选择警告等级，选择All-warnings会有较多的报错，且大多数都是HAL库底层的报错。不建议选择No Warnings，警告是用来检查代码的潜在逻辑错误的，如果选择No Warnings，可能会产生阴间问题。也可以使用<code>-Wno</code>自行关闭部分警告。</p>
+<p>Turn Warnings into Errors：把警告转换成错误，控制<code>Werror</code>参数。勾选以后警告都会变成错误，编译无法通过。</p>
+<p>Plain Char is Signed，字符使用有符号整数：控制<code>fsigned-char</code>参数。勾选后，<code>char</code>是有符号的1字节整数，等同于<code>int8_t</code>；不勾选就是无符号数，等同于<code>uint8_t</code>。默认是无符号的。</p>
+<p>Language C/C++, C/C++语言标准：控制<code>-std</code>参数。可以选择C/C++编译标准。建议C99以上。各标准之间的区别，自行搜索。</p>
+<p>Keil MDK最新版最高支持到c11(gnu11)和c++17(gnu++ 17)。</p>
+<h3 id="short-enumswchar-use-rtti-no-auto-includes">Short enums/wchar, use RTTI, No Auto Includes</h3>
+<p>Short enums/wchar：短枚举/宽字符，控制<code>fshrot-enums</code>和<code>fshort-wchar</code>参数。启用以后可以优化枚举类型和wchar字符变量，减小代码体积。</p>
+<p>短枚举：默认枚举类型的类型都是<code>int32_t</code>，有些地方用不到这么大的范围。因此编译器可以根据枚举的值选择范围最小能容纳枚举的类型。比如一个枚举类型的值没有超过100的，那么编译器会给他分配<code>int8_t</code>。</p>
+<p>宽字符<code>wchar</code>是C++引入的为了处理更广泛字符集的字符变量类型，包括Unicode。我们都知道，<code>char</code>占一个字节，但是单个<code>char</code>变量只能处理ASCII字符，处理不了诸如汉字等多字节的字符。所以引入了<code>whcar_t</code>关键字用来处理非ASCII字符。默认情况下一个<code>wchar_t</code>字符占用4个字节，启用这个选项以后一个<code>wchar_t</code>字符占用2个字节。</p>
+<p>C++11引入了<code>char16_t</code>和<code>char32_t</code>用来指定字符的字节。</p>
+<blockquote>
+<p>PS：在GB2312编码中，一个汉字占2个字节；在UTF-8编码中，一个汉字占3个字节。</p>
+</blockquote>
+<p>RTTI（Runtime Type Identification）运行阶段类型识别，控制<code>rtti</code>参数。C++特性，了解即可。</p>
+<p>No Auto Includes：启用后，编译器不会从芯片安装的pack包中搜索头文件，必须自己指定。这里的头文件主要是指的芯片的CMSIS包，以F4为例，如果不勾选会从指定芯片的DFP包中寻找芯片的头文件。除非需要自己指定芯片的头文件，否则不勾选。</p>
+<p>下面是AC5特有的参数。</p>
+<p>打开Project - Option for Target 'balabala'（魔法棒），Target里编译器选择version 5或者V5.06，C/C++选项卡，这里可以配置AC5编译器的参数。</p>
+<p><img alt="image.png" src="image%2017.png" /></p>
+<p>这里的选项和AC6是差不多的，主要区别几个。</p>
+<p>Strict ANSI C：控制<code>--strict</code>参数。勾选以后将会严格按照ANSI C检查语法错误，比如下面的代码：</p>
+<pre><code class="language-C">void * ptr;
+ptr++;  /* GNU允许, 但ANSI不允许 */
+</code></pre>
+<p>包括很多<code>asm, typeof, inline</code>等来自GNU的语法都无法使用。ANSI C其实就是C89标准，不推荐勾选。</p>
+<p>Enum Container always int：控制<code>--enum_is_int</code>参数。勾选后，所有枚举类型都是<code>int32</code>。</p>
+<p>GNU Extensions：控制<code>--gnu</code>参数。勾选后，可以使用GNU的一些特性，但CMSIS中必须包含<code>cmsis_gcc.h</code>头文件</p>
+<p>想一想这里为什么没有链接器的选项，前面我说过，下面也有答案。</p>
+<h3 id="use-microlib-big-endian-floating-point-hardware">Use MicroLIB, Big Endian, Floating Point Hardware</h3>
+<p>这两个参数在Target选项卡。</p>
+<p>Use MicroLIB：使用微库，勾选后会添加一个<code>__MICROLIB</code>宏定义。MicroLIB是为了减少代码体积，优化单片机运行效率，对ANSI标准库文件进行修改和裁剪的一个库。如果使用C++，微库将无法使用。</p>
+<p>Big Endian：使用大端序。勾选后以大端序的方式存储和处理数据，ARM架构的CPU都支持大端序和小端序。下面简单说一下大小端序的区别：</p>
+<pre><code>对于一个整数1234567890, 十六进制数为0x499602D2.
+大端序存储在内存的样子: 49 96 02 D2
+小端序存储在内存的样子: D2 02 96 49
+大端序对人类易于阅读, 但是对于计算机来说就不太方便, 比如要将这个数加1, 那么就需要找到最后一位的位置后再加1. 而对于小端序来说只需要在第一个位置加1就行了, 第一个位置就是一个数的最后一个位置.
+</code></pre>
+<p>具体参见<a href="https://zh.wikipedia.org/zh-cn/%E5%AD%97%E8%8A%82%E5%BA%8F#%E5%B0%8F%E7%AB%AF%E5%BA%8F">维基百科</a>。一般在做数据通信时要注意大小端的问题。</p>
+<p>Float Point Hardware：浮点运算硬件，控制<code>-mfpu -mfloat-abi</code>参数。默认为Soft，即使用软件来让CPU计算浮点数。但是使用CPU计算浮点数速度会比较慢，因此Cortex-M4及更高的内核提供了FPU来加速浮点运算。</p>
+<p>Cortex-M3没有FPU。Cortex-M4支持Single Precision；Cortex-M7还支持Double Precision；Cortex-M55还支持向量扩展。</p>
+<h3 id="_2">包含路径、自定义编译参数</h3>
+<p>Include Paths用于指定编译器头文件搜索路径。</p>
+<p>Misc Controls是指定特定的编译参数，比如让AC5报错警告信息变成日文（AC5只支持英语和日语，没有其他语言包。）：</p>
+<p><img alt="image.png" src="image%2018.png" /></p>
+<p>当我们每更改一个编译设置时，Compiler Control String都会变化，这里显示的就是最终Keil给编译器的参数。我们也可以把这里复制，用命令行去编译，效果是一样的。</p>
+<h2 id="_3">实际编译效果</h2>
+<p>这里我以lvgl stress代码为例，219个C文件，1个汇编文件，看看各种编译级别生成的代码有什么不同。</p>
+<p>STM32F103平台，HAL库版本1.1.9，Ryzen5 5600H全核心编译，所有代码全编译。</p>
+<p>AC6.21, C11/C++11, AC5 like warnings，测试结果</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>RAM使用</th>
+<th>ROM使用</th>
+<th>构建时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O0，关闭LTO与One ELF</td>
+<td>37.7KB</td>
+<td>453.2KB</td>
+<td>10秒</td>
+</tr>
+<tr>
+<td>Ofast，关闭LTO与One ELF</td>
+<td>37.6KB</td>
+<td>359.1KB</td>
+<td>12秒</td>
+</tr>
+<tr>
+<td>Omin，关闭LTO与One ELF</td>
+<td>37.6KB</td>
+<td>241.2KB</td>
+<td>12秒</td>
+</tr>
+<tr>
+<td>Os，关闭LTO与One ELF</td>
+<td>37.6KB</td>
+<td>289.4KB</td>
+<td>12秒</td>
+</tr>
+<tr>
+<td>O0，打开LTO与One ELF</td>
+<td>37.0KB</td>
+<td>347.1KB</td>
+<td>14秒</td>
+</tr>
+<tr>
+<td>Ofast，打开LTO与One ELF</td>
+<td>37.0KB</td>
+<td>368.7KB</td>
+<td>21秒</td>
+</tr>
+<tr>
+<td>Omin，打开LTO与One ELF</td>
+<td>37.0KB</td>
+<td>180.2KB</td>
+<td>15秒</td>
+</tr>
+</tbody>
+</table>
+<p>打开LTO会使链接时间变长，但能显著降低代码体积。</p>
+<p>AC5.06, C99, All warnings，测试结果</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>RAM使用</th>
+<th>ROM使用</th>
+<th>构建时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O0，关闭One ELF</td>
+<td>37.5KB</td>
+<td>318.4KB</td>
+<td>13秒</td>
+</tr>
+<tr>
+<td>O1，关闭One ELF</td>
+<td>37.5KB</td>
+<td>264.4KB</td>
+<td>13秒</td>
+</tr>
+<tr>
+<td>O3，关闭One ELF</td>
+<td>37.5KB</td>
+<td>250.5KB</td>
+<td>13秒</td>
+</tr>
+<tr>
+<td>O0，打开One ELF</td>
+<td>37.5KB</td>
+<td>258.5KB</td>
+<td>13秒</td>
+</tr>
+<tr>
+<td>O1，打开One ELF</td>
+<td>37.5KB</td>
+<td>218.7KB</td>
+<td>13秒</td>
+</tr>
+<tr>
+<td>O3，打开One ELF</td>
+<td>37.5KB</td>
+<td>208.0KB</td>
+<td>15秒</td>
+</tr>
+</tbody>
+</table>
+<p>GCC将编译和链接做成了一个组件，所以没有LTO选项。LLVM是模块化设计，编译和链接是两个组件。</p>
+<p>数据仅供参考，可以自行编译一个较大的工程测试。</p>
+<h1 id="debug">调试Debug</h1>
+<p>这里的调试不是指改一个参数，下进去；然后看现象，然后再改参数，再下进去。看函数有没有进，函数哪里加个<code>printf</code>，这tm叫锤子调试，不嫌麻烦吗？人家费尽心思写的调试功能不用是吧，非得折腾自己。</p>
+<p>如何使用调试，Step into, Step over怎么用，自己网上学，这里不讲。调试几个关键的就是单步、反汇编、查看内存数据、查看寄存器数据。</p>
+<p>使用Keil调试非常简单，编译后点击Start/Stop Debug Session即可进入调试。</p>
+<p><img alt="image.png" src="image%2019.png" /></p>
+<p>使用VSCode调试首先下载gcc for arm toolchain, openocd，然后将他们添加到环境变量中。在Flash Configurations中选择下载器类型，配置一下调试器的设置（比如JLink需要选择芯片型号），选择 Run(运行)-Starting Debugging(启动调试)即可进入调试。</p>
+<p>如果调试报错，打开<code>\.vscode\launch.json</code>，删除<code>configurations</code>中的所有配置，保存。</p>
+<p>确保调试器选择正确，然后再按下F5，选择Cortex-Debug调试。</p>
+<p><img alt="image.png" src="image%2020.png" /></p>
+<p>使用STLink的话请使用请使用OpenOCD, Interface Config选择stlink-v2.cfg。注意工作目录不要有中文，否则调试会报错。</p>
+<p><img alt="image.png" src="image%2021.png" /></p>
+<h1 id="_4">编译信息</h1>
+<p>这部分内容请见网盘里的《<a href="https://www.123pan.com/s/bcEUVv-yvyOh.html">STM32 MAP文件浅析_V1.1.pdf</a>》，正点原子写的挺详细的。</p>
+<h1 id="ramrom-layout">RAM/ROM Layout</h1>
+<p>由于单片机内部资源寸土寸金，如果我们不外挂RAM、ROM或者NAND Flash，仅片上的资源来说是比较少的。对于STM32F429IGT6也只有256 KB的RAM和1 MB的Flash。因此在编译的时候就会</p>
+<h1 id="startup">startup启动文件分析</h1>
+<p>详见《<a href="https://www.123pan.com/s/bcEUVv-yvyOh.html">STM32 启动文件浅析_V1.2.pdf</a>》，这里只讲一个地方。</p>
+<p><code>malloc</code>变量是分配在堆里的，函数调用需要栈，因此堆栈的大小就会影响单片机能分配的变量大小、函数进出栈。如果一个变量<code>malloc</code>分配的特别大，超出了堆的大小，那么就会返回<code>NULL</code>。堆栈的大小是在<code>startup</code>中的下面两个地方定义：</p>
+<p><img alt="image.png" src="image%2022.png" /></p>
+<p><code>Stack_Size</code>是栈大小，决定函数嵌套的深度和调用的容量；<code>Heap_Size</code>是堆大小，决定分配的变量大小。单位为字节，默认的<code>Stack_Size</code>是<code>0x0400</code>也就是1 KB大小，<code>Heap_Size</code>是<code>0x4000</code>也就是16 KB大小。这个值不能超过单片机的RAM大小，STM32F103RCT6是64 KB的RAM，STM32F429IGT6是256 KB的RAM。</p>
+<p>程序的局部变量分配在栈区，动态申请的内存在堆区，全局变量在全局变量区，可以通过map文件找到全局变量的地址。</p>
+<h1 id="boot">BOOT</h1>
+<p>占位</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

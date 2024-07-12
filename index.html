@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh_Hans_CN" data-bs-theme="auto">
+<html lang="zh_CN" data-bs-theme="auto">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,7 +32,7 @@
                     <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> 搜索
+                                <i class="fa fa-search"></i> Search
                             </a>
                         </li>
                             <li class="nav-item dropdown">
@@ -74,7 +74,7 @@
             <div class="row">
                     <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="目录">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
@@ -83,8 +83,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#2024summer" class="nav-link">2024Summer</a>
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">欢迎访问新疆大学飓风战队技术文档站</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#_2" class="nav-link">电控</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -92,103 +96,17 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="2024summer">2024Summer</h1>
-<p>红色代表在暑假必须掌握，绿色代表可以到学校再学，蓝色代表可以不学</p>
-<ul>
-<li>
-<h3 id="frankc">基础知识（可能会比较难，但是要会，要不然有些代码你根本不知道他是怎么实现的。Frank的C语言课基本都有。可能暑假学不完。大概列一下，实际要学的要比这多）</h3>
-</li>
-<li>
-<p><font color='red'>位操作(与或非，写入位与读出位)</font></p>
-</li>
-<li><font color='red'>卫语句</font></li>
-<li><font color='red'>C库函数(如<code>(f)(s)(v)scanf, (f)(s)(v)printf,atoi,strcat,strtol</code>)</font></li>
-<li><font color='red'>结构体与指针</font></li>
-<li><font color='red'>栈内存与堆内存</font></li>
-<li><font color='red'>枚举与状态机</font></li>
-<li><font color='red'>数组与表驱动</font></li>
-<li><font color='red'>函数指针与回调函数，事件处理框架</font></li>
-<li><font color='gree'><code>void*</code>与泛型编程</font></li>
-<li><font color='gree'>规则引擎设计(规则映射)</font></li>
-<li>
-<p><font color='gree'>可变参数</font></p>
-</li>
-<li>
-<h3 id="_1">外设</h3>
-</li>
-<li>
-<p><font color='red'>GPIO</font></p>
-</li>
-<li><font color='red'>ADC, DAC</font></li>
-<li><font color='red'>I2C, SPI</font></li>
-<li><font color='red'>Timer</font></li>
-<li><font color='red'>CAN (必须熟练，要不然不会写电机驱动)</font></li>
-<li>
-<p><font color='gree'>USART + DMA (如何保证串口通信的可靠性)</font></p>
-</li>
-<li>
-<h3 id="_2">嵌入式组件</h3>
-</li>
-<li>
-<p><font color='red'>FreeRTOS</font></p>
-</li>
-<li><font color='DodgerBlue'>其他RTOS(掌握操作系统核心原理后会发现其实都大同小异)</font></li>
-<li>
-<p><font color='DodgerBlue'>串口Debug(正点原子的USMART，先大概学一下，我打算基于这个升级一下)</font></p>
-</li>
-<li>
-<h3 id="_3">算法（学习一下原理，不要求写代码）</h3>
-</li>
-<li>
-<p><font color='red'>全向轮底盘</font></p>
-</li>
-<li><font color='red'>麦轮底盘</font></li>
-<li><font color='red'>舵轮底盘</font></li>
-<li>
-<p><font color='red'>机械臂</font></p>
-</li>
-<li>
-<h3 id="_4">开发工具与环境</h3>
-</li>
-<li>
-<p><font color='red'>Git</font></p>
-</li>
-<li><font color='red'>VSCode</font></li>
-<li><font color='gree'>CMSIS + Keil MDK v6 + RTE(主要我还没研究完)</font></li>
-<li>
-<p><font color='DodgerBlue'>工具链(弄懂这个可以不依赖任何IDE)</font></p>
-</li>
-<li>
-<h3 id="stm32">STM32深入（平时翻着手册学一下，如果遇到比较难的花点时间搞懂就行。不要用大量的时间从头看到尾，没意义，学完就忘。）</h3>
-</li>
-<li>
-<p><font color='gree'>STM32地址映射(大概了解)</font></p>
-</li>
-<li><font color='gree'>ST HAL+LL库的配置和架构(简单了解)</font></li>
-<li><font color='gree'>调试器的一些组件使用(ITM, Eventer Recoder等)</font></li>
-<li><font color='DodgerBlue'>STM32外设寄存器</font></li>
-<li><font color='DodgerBlue'>ARM Cortex内核与寄存器</font></li>
-<li>
-<p><font color='DodgerBlue'>STM32时钟树</font></p>
-</li>
-<li>
-<h3 id="mp3mp4usb">下面是我觉得比较有意思的东西，不要求学，自己没事可以玩一下，比如做个MP3，MP4，USB声卡，电子书，智能家居（用手机开关灯）。。。</h3>
-</li>
-<li>
-<p>USB</p>
-</li>
-<li>GUI，如LVGL(学习成本可能会比较高)</li>
-<li>F(S)MC + SRAM + LCD + NAND Flash (如果使用GUI，建议学一下)</li>
-<li>以太网</li>
-<li>文件系统</li>
-<li>...</li>
-</ul></div>
+<h1 id="_1">欢迎访问新疆大学飓风战队技术文档站</h1>
+<p>这里会包括电控、电路、视觉、机械等资料，不断更新中……</p>
+<h2 id="_2">电控</h2>
+<p><a href="STM32/">STM32开发技术指南</a></p>
+<p><a href="2024Summer/">2024暑期学习</a></p></div>
             </div>
         </div>
 
         <footer class="col-md-12">
             <hr>
-            <p>用<a href="https://www.mkdocs.org/">MkDocs</a>建立的文档。</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script src="js/bootstrap.bundle.min.js"></script>
         <script>
@@ -202,17 +120,17 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>从这里你可以搜索这些文件。在下面输入您的搜索内容。</p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="在此输入搜索内容">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="没有搜索到结果"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -222,33 +140,33 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">键盘热键</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">
                 <thead>
                   <tr>
-                    <th style="width: 20%;">键</th>
-                    <th>动作</th>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>打开这个帮助</td>
+                    <td>Open this help</td>
                   </tr>
                   <tr>
                     <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>下一页面</td>
+                    <td>Next page</td>
                   </tr>
                   <tr>
                     <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>上一页面</td>
+                    <td>Previous page</td>
                   </tr>
                   <tr>
                     <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>搜索</td>
+                    <td>Search</td>
                   </tr>
                 </tbody>
               </table>
@@ -264,5 +182,5 @@
 
 <!--
 MkDocs version : 1.6.0
-Build Date UTC : 2024-07-12 03:22:45.945437+00:00
+Build Date UTC : 2024-07-12 19:53:06.310418+00:00
 -->

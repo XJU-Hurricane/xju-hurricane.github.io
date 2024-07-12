@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh_CN" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Git - XJU_Hurricane-docs</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">XJU_Hurricane-docs</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#git" class="nav-link">为什么使用Git</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>Git是一个开源的分布式版本控制系统，可以很方便的管理和控制软件版本，也可以很方便的进行多人协作。</p>
+<p>Git是Linus在2005年4月发布的一款版本控制系统。Linus在开发Linux内核时，嫌弃当时的版本控制系统又难用还要钱。于是自己花了十天时间，写了Git用来Linux开发。</p>
+<p>Git有Git GUI，可以以可视化的方式来使用，鼠标点几下就可以完成pull, commit和push的动作，我也经常用VSCode的版本控制来提交和上传代码。鼠标点几下确实比敲命令方便。但我建议大家必须学会命令行的操作，在企业里有时候是没有GUI让你用的，现在的大多数服务器都是不会安装GUI的，这时候如果你想用服务器提交代码的话必须用命令行，你没得选。</p>
+<p>尽管命令行学起来头疼，这很正常，因为Git本身就是一个很Linux的东西，你不能用Windows的那一套思想去用这个东西。但是学会了以后会感觉很爽，你就会发现以前把压缩包发来发去真****。</p>
+<p>这里有一个网站，玩一遍我相信你对Git的了解也就差不多了，<a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a></p>
+<p>Git Reference: <a href="https://git-scm.com/docs">https://git-scm.com/docs</a> zh-cn: <a href="https://git-scm.com/book/zh/v2">https://git-scm.com/book/zh/v2</a></p>
+<p>一些学习资源，当然也可以自己找，非常多，这里就不讲了：</p>
+<p><a href="https://missing-semester-cn.github.io/2020/version-control/">https://missing-semester-cn.github.io/2020/version-control/</a></p>
+<p><a href="https://www.bilibili.com/video/av802848210/">https://www.bilibili.com/video/av802848210/</a></p>
+<h1 id="git">为什么使用Git</h1>
+<p>举个典型的例子，给甲方做项目。写了一个初稿，甲方不满意，然后在此基础上改出第二版，甲方说小改一下就行了，然后改到第N版，甲方说用初版。假如每次改版都会留上一个版本，那么可以很方便的回溯版本。如果甲方说整体还可以，但是要撤销之前的某个改动，那么可以查看每次的更改记录，找到后改回。如果是一个多人项目，那么可以像在线文档一样多人协作。</p>
+<p>那么以上所说的几点功能，我相信大家如果用过像腾讯文档、金山文档这类的在线文档工具，应该都清楚。但大家有没有想过代码怎么像在线文档一样有版本回溯、多人协作呢？难道把代码放在一个Word文件里，然后大家创建一个在线文档一起写？可一个项目有非常多的源文件，管理起来也不方便。这样做显然不可能。因此对于源代码的版本控制工具，我们一般用Git。</p>
+<p>那么Git与Github又有什么关系呢？大多数人会告诉你：Git是一个版本控制工具，而Github是代码托管平台。我估计有人可能搞不清楚这说的什么玩意。其实很简单，Git就是你在本地用来上传或者下载代码的工具，Github就是存储所有源代码、上传记录、历史版本的一个仓库。除了Github，还有Gitee(码云)，Gitlab，也是和Github一样是代码托管平台。当然也可以自己用服务器或者自己的电脑搭建一个Git服务器，都是可以的。使用起来无非就是仓库地址不一样，其他都一模一样。</p>
+<p>大多数人会告诉你Git是一个分布式的版本控制系统，分布式是什么意思呢，也就是说代码不会只存在像Github托管平台的一个地方，所有人想要上传修改记录就先把仓库的代码全部下载下来，然后再更改后上传，这就是分布式的意义，每个电脑都有仓库里完整的源代码。</p>
+<p>除了分布式，那我估计你也了猜到了，肯定还有个集中式版本控制系统（一般用SVN）。那集中式是什么意思，也很简单，就是所有源代码只存储在中心代码服务器上，修改代码的时候只在本地下载这一个文件，不会像Git一样把整个仓库代码下载下来。这样做的好处是安全性强，可以避免源码泄漏。相较于Git，SVN可以很好地控制文件权限，毕竟Git是为开源项目而设计的。</p>
+<p><img alt="提交记录" src="image.png" />
+提交记录</p>
+<p><img alt="提交快照" src="image%201.png" />
+提交快照</p>
+<p><img alt="多人协作" src="image%202.png" />
+多人协作</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

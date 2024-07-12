@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh_CN" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>C standard - XJU_Hurricane-docs</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">XJU_Hurricane-docs</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">省流</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_2" class="nav-link">为什么需要规范代码风格和命名</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_3" class="nav-link">命名禁忌</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_4" class="nav-link">命名规则</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#_5" class="nav-link">包含单位</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_6" class="nav-link">函数</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_7" class="nav-link">变量</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_8" class="nav-link">宏定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_9" class="nav-link">句柄</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_10" class="nav-link">代码规范</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#_11" class="nav-link">头文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_12" class="nav-link">源文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_13" class="nav-link">缩进与空格</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_14" class="nav-link">括号换行</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_15" class="nav-link">空行</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_16" class="nav-link">代码行</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_17" class="nav-link">代码块</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_18" class="nav-link">函数</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_19" class="nav-link">变量</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_20" class="nav-link">复杂数据类型</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_21" class="nav-link">数组与指针</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_22" class="nav-link">宏定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#goto" class="nav-link">goto</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_23" class="nav-link">杂项</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_24" class="nav-link">注释</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#_25" class="nav-link">文件头</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_26" class="nav-link">函数</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_27" class="nav-link">结构体</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_28" class="nav-link">模块</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_29" class="nav-link">预编译命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_30" class="nav-link">杂项</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_31" class="nav-link">自动生成注释</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_32" class="nav-link">文件编码</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_33" class="nav-link">段末换行符</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<blockquote>
+<p>If you need more than 3 levels of indentation, you’re screwed anyway, and should fix your program.</p>
+<p>如果你的代码缩进超过三层，意味着你已经搞砸了，你需要重构。</p>
+<p>——Linux之父Linus Torvalds</p>
+</blockquote>
+<p>你的代码是给别人看的，不是光你自己看的。因此代码可读性是第一位。</p>
+<p>其实我更推荐大家使用CLion来编写代码，CLion拥有强大的静态代码分析工具，可以分析出源文件中的各种初级逻辑错误与可能存在的漏洞，当然VSCode也会给警告，但不如CLion好用。</p>
+<p>更高层次的规范会到接口规范、资源管理等。但是鉴于我的水平，以及我们开发的程序复杂度，没有必要引入这么高层次的要求。</p>
+<p>下面有些代码技巧只是建议，实际代码怎么写还要靠你自己去斟酌，比如我说我们大部分声明的变量值都不会变，那么可以适当考虑添加<code>const</code>修饰符，不能见到个变量就加，这样可读性会变差。</p>
+<p>总之，我不希望把写代码当成中学的作业一样，完成功能就完事，顶多老师讲题的时候review一下。代码怎么写，怎么处理现实世界复杂的逻辑，企业是如何构建和管理一个复杂的大型项目的，没有老师或者课程能教会你，也没有标准答案。</p>
+<p><strong><em>Try to regard code as art. Code contains huge power to change the world. Just enjoy it!</em></strong> </p>
+<h1 id="_1">省流</h1>
+<ul>
+<li>
+<p>代码规范对于提高代码质量非常重要</p>
+</li>
+<li>
+<p>命名用下划线命名法，宏定义字母全大写，预编译命令的<code>#else, #endif</code>行末加注释说明条件</p>
+</li>
+<li>
+<p>全局变量加<code>g_</code>前缀，全局指针加<code>p_</code>前缀，如果不公开使用加<code>static</code>修饰符</p>
+</li>
+<li>
+<p>命名务必简明扼要，不要意义不明</p>
+</li>
+<li>
+<p>结构体/联合体/枚举等复杂数据类型，除非不公开，统一用<code>typedef</code>定义名称，并加上<code>_t</code>后缀</p>
+</li>
+<li>
+<p>缩进最多接受6层，超过6层必须重写；预编译如果嵌套命令不缩进</p>
+</li>
+<li>
+<p>不准使用递归</p>
+</li>
+<li>
+<p>对于有返回值的函数，必须返回一个默认值，不能有什么都不返回的情况</p>
+</li>
+<li>
+<p>不准使用未定义的变量，使用变量前必须定义初值</p>
+</li>
+<li>
+<p>代码排版按照我写的<code>.clang-format</code>格式化</p>
+</li>
+<li>
+<p>注释用<code>doxygen</code></p>
+</li>
+</ul>
+<h1 id="_2">为什么需要规范代码风格和命名</h1>
+<p>对于一个高质量的工程，一般会做到：</p>
+<ol>
+<li>
+<p>代码简洁精炼，美观，可读性好，高效率，高复用，可移植性好，高内聚，低耦合，没有冗余，不符合这些原则，必须特别说明。</p>
+</li>
+<li>
+<p>规范性，代码有规可循。特殊排版、特殊语法、特殊指令，必须特别说明。</p>
+</li>
+</ol>
+<p>我们规范代码风格和命名的愿景是码出高效，码出质量。现代软件架构的复杂性需要协同开发完成，如何高效地协同呢？无规矩不成方圆，无规范难以协同，比如，制定交通法规表面上是要限制行车权，实际上是保障公众的人身安全，试想如果没有限速，没有红绿灯，谁还敢上路行驶？对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的统一方式一起做事，提升协作效率，降低沟通成本。代码的字里行间流淌的是软件系统的血液，代码质量的提升是尽可能少踩坑，杜绝踩重复的坑，切实提升系统稳定性，码出质量。</p>
+<p>规范代码风格可以方便代码移植和复用，提高代码可读性，而好的命名是对程序非常重要的，命名是编程的心脏，如果连命名都做不好，那么程序过不了多久就会变得难以维护。你的代码是写给别人看的，如果你自己都看不懂的代码别人更看不懂。所以代码和命名规范，非常重要。</p>
+<p>参照：<a href="https://users.ece.cmu.edu/~eno/coding/CCodingStandard.html#names">C Coding Standard (cmu.edu)</a></p>
+<h1 id="_3">命名禁忌</h1>
+<p>下面的命名绝对不允许出现，如果在企业项目中敢这样命名，你的上司和同事绝对会拿键盘来砸你。</p>
+<p>参照视频：<a href="https://www.bilibili.com/video/av275983985/">代码命名怎么可能让别人满意？自己满意就行了 Naming Things in Code 变量命名_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
+<ul>
+<li>
+<p>单字母：<code>int a, b, c; float x, y, z</code>，循环变量可以使用<code>i,j,k</code>，但<strong>不要把<code>i,j,k</code>定义成全局变量</strong></p>
+</li>
+<li>
+<p>重复的无意义字母：<code>int aa, bb, cc, dd</code></p>
+</li>
+<li>
+<p>拼音及拼音首字母缩写：<code>char[30] mingZi, sb, nb; char xingbie; int xh, nl</code>，对于一些公认的拼音，可以使用，如<code>Alibaba, Aliyun, Baidu, Bilibili, Sogou</code>等（貌似都是公司名）</p>
+</li>
+<li>
+<p>不规范的缩写：<code>int cont_freq</code>，查询常见单词的缩写可以使用这个网站：<a href="https://www.abbreviations.com/">Abbreviations.com</a></p>
+</li>
+</ul>
+<h1 id="_4">命名规则</h1>
+<p>命名的总原则是精准地描述功能。如果命名意义不明确，那么代码也是没有意义的。命名要做到见名知意，而不是让别人去猜。好的命名是自解释的，也就是从名字就可以看出来含义，不需要注释去说明。在程序开发中，<strong>如果一段代码或者变量没有意义，那么这段代码或者变量就不应该存在。</strong></p>
+<p><strong>统一使用下划线命名法，即单词全部使用小写字母，包括函数、变量、结构体等。单词之间用下划线隔开。对于第三方代码保留其命名风格，不要修改。</strong></p>
+<ul>
+<li>
+<p>统一性：编写一个模块的代码时，最好使用一个统一的前缀，比如操作NAND Flash的代码，可以加一个<code>nand_</code>前缀</p>
+</li>
+<li>
+<p>与作用域关联：变量命名的长度和他的作用域有关，作用域越大，命名尽可能越长。这样能最大程度避免命名冲突</p>
+</li>
+<li>
+<p>最短长度，最大化信息：在保持一个标识符意思明确的同时，尽量缩短长度。尽量不要超过6个单词</p>
+</li>
+<li>
+<p>避免重名或相似：避免在不同级别作用域中重名，虽然在C/C++中允许局部变量和全局变量重名，但这样容易引起误解</p>
+</li>
+<li>
+<p>避免出现编号：如<code>number1, number2</code>，可以使用数组代替。除非在逻辑上必须使用编号，无法用数组代替，比如<code>USART1, USART2</code></p>
+</li>
+</ul>
+<h2 id="_5">包含单位</h2>
+<p>这种命名适合用在参数中，比如要传入等待超时时间，单位是毫秒，那么就可以写<code>timeout_ms</code>；让电机转到一个角度，单位是度，可以用<code>target_angle_degree</code>。当然如果太长，也可以在注释的<code>@param</code>注明。</p>
+<h2 id="_6">函数</h2>
+<p>函数命名要和功能或者行为准确对应。一般是动词+名词，如果命名不算长，介词也是必要的，比如<code>dump_data_to_file</code>，这样阅读起来非常自然，也好分辨，当然一个变量不要搞太多的单词，尽量不超过6个。</p>
+<p>如果一个函数是进行某个动作，如<code>get, set</code>，那么一般把动词放前面。比如获取当前队列的消息，最好用<code>get_queue_msg</code>，而不是<code>queue_msg_get</code>。如果某个东西是进行判断的，最好加<code>is</code>前缀，比如判断消息队列是否已满的函数，最好写<code>is_msg_queue_full</code>，而不是<code>msg_queue_full</code>。</p>
+<p>有时候使用互斥词是一个较好的命名方式，常见的互斥词如下：</p>
+<pre><code>add/remove      begin/end           create/destroy      insert/delete 
+first/last      get/release         increment/decrement put/get/add/delete
+lock/unlock     open/close          min/max             old/new 
+start/stop      next/previous       source/target       show/hide 
+send/receive    source/destination  copy/paste          up/down
+</code></pre>
+<h2 id="_7">变量</h2>
+<p>变量命名尽量用形容词+名词，可以把变量想象成一个容器，比如<code>red_envelop_money</code></p>
+<p>可以加修饰词，一般把修饰词放后面，这些修饰词包括<code>max, min, count</code>等。比如消息队列能容纳的最大值，最好用<code>msg_queue_max</code>，而不是<code>max_msg_queue</code>。</p>
+<p>对于局部变量，命名不要太长，1~3个单词为宜。不要违反上面所说的禁忌。</p>
+<p>全局变量统一加<code>g_</code>前缀，全局指针加<code>p_</code>前缀，全局变量除前缀外最好2~5个单词，这样能最大程度避免重名。不要违反上面所说的禁忌。</p>
+<p><code>i,j,k</code>可以作为循环变量，但只能在循环内使用，不能让循环变量的作用域超出循环体：</p>
+<pre><code class="language-C">/* 不允许, 正点原子采用这种方式是为了兼容C89 */
+int i;
+for (i = 0; i &lt; count; i++) {
+    list[i] = ...
+}
+/* 使用下面的方式让循环变量的作用域只在for循环里 */
+/* PS: C标准至少在C99以上, C89这样写会报错 */
+for (int i = 0; i &lt; count; i++) {
+    list[i] = ...
+}
+</code></pre>
+<p>如果要在循环外使用循环变量，比如要查找一个值的位置，<strong>那说明这个循环变量是有意义的</strong>，不能用<code>i,j,k</code>这种单纯下标意义的变量来命名。</p>
+<h2 id="_8">宏定义</h2>
+<p>宏定义常量时<strong>字母全部用大写</strong>，同时宏定义尽量加前缀。</p>
+<p>对于头文件中避免重复编译的宏<code>#ifndef __XXX_H #define __XXX_H</code>，标识符使用<code>__XXX_H</code>的写法，即两个下划线开头，XXX一般是文件名的大写字母，随后跟上一个下划线加一个H。</p>
+<h2 id="_9">句柄</h2>
+<p>句柄加<code>_handle</code>后缀，句柄名称与类型和功能匹配就可以了</p>
+<h1 id="_10">代码规范</h1>
+<p>保持代码风格的统一，对code reading, review, refactoring, porting等都有好处。这些代码规范大多数情况下Clang-format都会帮我们自动排版，无需我们手动调整。<strong>统一使用Github中<code>STM32_Template</code>的<code>.clang-format</code>文件。</strong></p>
+<h2 id="_11">头文件</h2>
+<ul>
+<li>
+<p>只引用需要的头文件，不要包含一堆头文件</p>
+</li>
+<li>
+<p><code>#include</code>中的文件名对大小写敏感</p>
+</li>
+<li>
+<p>头文件放在<code>Inc</code>目录，源文件放在<code>Src</code>目录</p>
+</li>
+<li>
+<p>对于C++代码，头文件使用<code>.hpp</code>后缀</p>
+</li>
+<li>
+<p>如果一个目录中有多个子目录中的头文件需要包含，使用相对路径，不要在<code>IncludePath</code>中添加，例如：</p>
+</li>
+</ul>
+<pre><code class="language-C">/*
+某个模块的文件结构：
+model_root
+├─foldA
+│  └─functionA.h
+├─foldB
+│  └─functionB.h
+├─foldC
+│  └─functionC.h
+├─foldnD
+│  └─functionD.h
+├─foldE
+│  └─functionE.h
+└─foldF
+   └─functionF.h
+假如都需要这6个模块的头文件, IncludePath中只添加了model_root. 
+*/
+
+/* 你当然可以大力出奇迹, 将这6个文件夹全部添加到IncludePath中, 然后 */
+#include &quot;functionA.h&quot;
+#include &quot;functionB.h&quot;
+...
+#include &quot;functionF.h&quot;
+
+/* 但最好的做法是, 不添加IncludePath, 使用相对路径包含, 保证根目录在IncludePath就可以 */
+#include &quot;./flodA/functionA.h&quot;
+#include &quot;./foldB/functionB.h&quot;
+...
+#include &quot;./foldF/functionf.h&quot;
+
+</code></pre>
+<h2 id="_12">源文件</h2>
+<ul>
+<li>
+<p>如果有公开的内容，必须要有一个与源文件同名的头文件，<strong>公开内容写在头文件中</strong></p>
+</li>
+<li>
+<p>不要使用无意义的名称，如果是某个模块的代码，保证服务对象单一，不要包含太多其他模块的代码。</p>
+</li>
+<li>
+<p>对于C++代码，使用<code>.cpp</code>后缀</p>
+</li>
+<li>
+<p>头文件开头和末尾必须加上固定格式的宏定义，即<code>#ifndef ... #endif</code></p>
+</li>
+</ul>
+<pre><code class="language-C">/**
+ * @file    xxx.h
+ * @brief   balabala
+ * @auhor   yourname
+ * @date    2024-02-20
+ * @version 0.1
+ */
+
+#ifndef __XXX_H
+#define __XXX_H
+
+...
+
+#endif  /* __XXX_H */
+
+</code></pre>
+<h2 id="_13">缩进与空格</h2>
+<ul>
+<li>
+<p>统一使用4个空格缩进，不使用Tab缩进，不同编辑器定义的制表符长度不一，容易产生错位，所以使用<strong>四个空格代替制表符</strong></p>
+</li>
+<li>
+<p>嵌套缩进尽量控制在4层以内，最多接受6层，<strong>超过4层优化，超过6层必须重写</strong></p>
+</li>
+<li>
+<p><code>if () {}, switch () {}, case () {}</code>这类带花括号的关键字后须有空格；但是对于不跟花括号的关键字，如<code>sizeof(), __arrtibute__()</code>，不带空格</p>
+</li>
+<li>
+<p>圆括号、方括号内的代码与括号之间不加空格，外边根据情况添加空格，比如下面第2行的代码不应该写成：<code>data [ 3 ] = ( uint8_t )( verify_key &gt;&gt; 8 );</code></p>
+</li>
+<li>
+<p>二元、三元操作符前后都要加空格，如：<code>= + - &lt; &gt; * / % ^ &lt;= &gt;= == != ? :</code></p>
+</li>
+<li>
+<p>一元操作符后不要加空格，如：<code>&amp;(取地址) *(取指针的内容) + - ~ !</code>，但是如果声明指针变量，<code>*</code>放在靠近变量名的一侧，星号左边有一个空格</p>
+</li>
+<li>
+<p>自增和自减运算符前后都不加空格，如：<code>num++, --num</code></p>
+</li>
+<li>
+<p>访问结构体成员的操作符前后不加空格，如：<code>Init.Mode, hspi-&gt;Instance</code></p>
+</li>
+<li>
+<p>逗号，分号只在后面添加空格，如：<code>int age_max, age_min;</code>如果分号在行末，空格可加可不加</p>
+</li>
+<li>
+<p>数组下标的方括号都没有空格，如<code>buf[i]</code></p>
+</li>
+<li>
+<p>块注释<code>/* xxx */</code>与注释内容xxx前后各一个空格</p>
+</li>
+<li>
+<p>行注释<code>// xxx</code>双斜线后有一个空格，且两条斜线与行对齐，不要放在行首</p>
+</li>
+</ul>
+<p>以上几点代码举例：</p>
+<pre><code class="language-C">/* 运算符与数组下标 */
+data[3] = (uint8_t)(verify_key &gt;&gt; 8);
+for (int i = 0; i &lt;= num; i++) {
+    datax-&gt;buf[i] = x1 * (x2 + i) + baseval;
+}
+
+/* 声明指针变量 */
+char *str = NULL;
+
+</code></pre>
+<p>当然了，我们没必要关注这么多细节，大多数情况下自动格式化都会做好这一切。</p>
+<h2 id="_14">括号换行</h2>
+<ul>
+<li>
+<p>所有左花括号不换行，右花括号单独一行，对于<code>else</code>语句右花括号不换行。这样是为了减少代码阅读负担，一个左花括号占一行代码会看起来比较长，右花括号单独一行可以提醒读者这个代码块到底了</p>
+</li>
+<li>
+<p>对于参数列表或者其他圆括号内换行场景，后行与第一行左括号后第一个字符对齐，右括号不另起一行</p>
+</li>
+</ul>
+<pre><code class="language-C">/* 花括号使用案例 */
+/**
+ * @brief 按键扫描
+ *
+ * @param mode 是否支持连按
+ *  0-不支持连按, 1-支持连按
+ * @return 按下的按键
+ *  @retval 按下:`KEY0_PRES ~ WKUP_PRES`
+ *  @retval 未按下:`0`
+ * @note 注意此函数有响应优先级,`KEY0 &gt; KEY1 &gt; WK_UP`
+ */
+uint8_t key_scan(uint8_t mode) {
+    static uint8_t key_up = 1; /* 按键松开标志 */
+    if (mode == 1) {
+        key_up = 1; /* 支持连按 */
+    }
+    if (key_up &amp;&amp; (KEY0 == 0 || KEY1 == 0 || WK_UP == 1)) {
+        delay_ms(10);
+        key_up = 0;
+        if (KEY0 == 0) {
+            return KEY0_PRES;
+        } else if (KEY1 == 0) {
+            return KEY1_PRES;
+        } else if (WK_UP == 1) {
+            return WKUP_PRES;
+        }
+    } else if (KEY0 == 1 &amp;&amp; KEY1 == 1 &amp;&amp; WK_UP == 0) {
+        key_up = 1;
+    }
+    return 0; /* 无按键按下 */
+}
+
+/* 括号内换行 */
+xTaskCreate((TaskFunction_t)start_task, /* 任务函数 */
+            (const char *)&quot;start_task&quot;, /* 任务名称 */
+            (uint16_t)START_STK_SIZE,   /* 任务堆栈大小 */
+            (void *)NULL,               /* 传入给任务函数的参数 */
+            (UBaseType_t)START_TASK_PRIO,           /* 任务优先级 */
+            (TaskHandle_t *)&amp;g_start_task_handler); /* 任务句柄 */
+
+/* 下一行的位置与第一行括号后的第一个字符对齐, 最后的右括号不换行 */
+ring_fifo_t *ring_fifo_init(void *buf, uint32_t size,
+                            enum ring_fifo_type type);
+
+</code></pre>
+<h2 id="_15">空行</h2>
+<ul>
+<li>
+<p>文件头注释后有一个空行</p>
+</li>
+<li>
+<p>函数之间须加一个空行</p>
+</li>
+<li>
+<p>在注释某个函数、结构体、枚举、变量的功能时候不要加空行，见下面注释的说明</p>
+</li>
+<li>
+<p>在一个函数中，每个相对独立的操作完成以后最好有一个空行，比如下面的代码块，11,17,23行都有一个空行，表示上一个操作完成了，该下一个操作了，方便阅读</p>
+</li>
+</ul>
+<pre><code class="language-C">/**
+ * @brief 用户从快递柜取包裹
+ * 
+ * @param pick_up_code 取件码
+ * @return status_t 操作状态
+ */
+status_t user_pick_up_express(uint32_t pick_up_code) {
+    if (pick_up_code == 0) {
+        return ERR_INPUT_NULL;
+    }
+
+    uint32_t cabinet_number = seek_express_by_code(pick_up_code);
+    if (cabinet_number == 0) {
+        /* 柜子编号不存在 */
+        return ERR_NO_FOUND;
+    }
+
+    status_t cabient_status = cabient_open_the_door(cabient_number);
+    if (cabient_status == ERROR) {
+        /* 开门出错, 可能是柜子继电器出问题了, 提示联系管理员 */
+        return ERR_OPEN_DOOR;
+    }
+
+    return OK;
+}
+</code></pre>
+<p>用一堆<code>*</code>隔开也是个不错的选择，不过要注意一行80个字符</p>
+<h2 id="_16">代码行</h2>
+<ul>
+<li>
+<p>一行代码只做一件事情，比如只定义一个变量，或者一条语句，这样方便阅读与注释</p>
+</li>
+<li>
+<p>多个语句不要放在一行里，一行内不要写多个连续赋值的语句</p>
+</li>
+<li>
+<p>一行代码尽量不要多个变量。如果在逻辑上比较相近，可以写在一行上，比如<code>float width, height;</code></p>
+</li>
+<li>
+<p>一行最多80个字符，写代码经常需要分屏，一行代码如果太长就不太方便了。</p>
+</li>
+</ul>
+<pre><code class="language-C">/* 不规范写法 */
+a = x + y; b = x - y;
+a = b = 0;
+
+/* 规范写法 */
+a = x + y;
+b = x - y;
+a = 0;
+b = 0;
+</code></pre>
+<h2 id="_17">代码块</h2>
+<ul>
+<li>
+<p><strong><code>if, for, while, do</code>这类语句，必须加花括号，一个语句也必须加</strong>，这样可以有效防止编码时出现的失误</p>
+</li>
+<li>
+<p><strong>及时清理未使用的函数、变量等死代码</strong>，不要妨碍阅读。如果没有更改Template的警告等级，未使用的变量、函数都会给警告。我给的Template是为通用性考虑的，要是你自己写的东西及时清理没有用到的代码，可读性是第一位的。</p>
+</li>
+</ul>
+<blockquote>
+<p>未使用的代码叫做死代码(Dead-code)，Dead-code在一个企业项目中都是很危险的，这是由于Dead-code一般写完以后就不会再看了，就算code reviewing时reviewer也只是大概扫两眼，不会去执行调用，这段代码就会失去维护。如果哪一天某个人突然调用了Dead-code中的函数，这个函数有很隐蔽的bug，突然有一天就触发了，这会造成不可预估的损失。因此对于Dead-code，宁愿移除，未来某天再重写一遍，也不会放在哪里不管。</p>
+</blockquote>
+<ul>
+<li>要注意逻辑上永远不可能执行的代码，如果没有更改Template的警告等级，编译会给警告：</li>
+</ul>
+<p><img alt="image.png" src="image.png" /></p>
+<ul>
+<li>对于空语句，保留一个<code>{}</code>即可，括号里面即没有空格，也不换行，但是对于<code>if else</code>，括号内要换行；如果使用分号，必须换行，且分号前缩进。这样做意在提示阅读者注意此处的逻辑。</li>
+</ul>
+<pre><code class="language-C">/* 不规范写法 */
+if (condition)
+    return true;
+
+if (condition) return true;
+
+if (condition) { return true; }
+
+if (condition) {} else {
+    ...
+}
+while (condition) {
+}
+
+/* 规范写法 */
+if (condition) {
+    return true;
+}
+/* 空语句规范写法 */
+while (condition) {}
+/* 如果不用上面的方式, 可以采用下面的方式. 如果分号不换行易被误认成函数调用 */
+while (condition)
+    ;
+/* if else中的空语句括号需换行. 如果大括号中间不换行易被误认成if条件成立后执行 */
+if (condition) {
+} else {
+    ...
+}
+</code></pre>
+<h2 id="_18">函数</h2>
+<ul>
+<li>
+<p><strong>一个函数尽量不要超过10个局部变量</strong>，超过说明你的功能太复杂了，要考虑优化</p>
+</li>
+<li>
+<p>函数参数也不要太多，最多6个，太多说明你的功能太复杂了，要考虑优化</p>
+</li>
+<li>
+<p>一个函数也不要太长，100行左右为宜，太长同理</p>
+</li>
+<li>
+<p>校验逻辑放前面，发现错误早返回，这样能有效减少嵌套，避免代码逻辑错误</p>
+</li>
+<li>
+<p><strong>不允许使用递归</strong>，递归对于资源消耗巨大，易造成栈溢出（默认情况下<code>startup</code>定义的栈大小只有200字节）</p>
+</li>
+<li>
+<p>除<code>void</code>函数、构造函数、析构函数以外，<strong>函数末尾必须要<code>return</code>返回值</strong>，如果没有返回任何值编译会给警告</p>
+</li>
+<li>
+<p>函数的功能要单一，不能处理太多的业务逻辑，对于单一模块的文件服务的对象也要单一，不要让一个文件或者函数成大杂烩。</p>
+</li>
+</ul>
+<blockquote>
+<p>文件和函数的功能要专一。举个例子，医院是一个完整的程序，一家综合性医院一般都会有若干个科室，比如内科、外科、放射科等等。而内科又包括呼吸科、心血管科，但是内科不会有皮肤科。外科包括骨科、脑外科，但是不会有消化内科。同样的，在程序中也不能这样，保证服务的对象统一。像呼吸科这样的专科门诊就可以看作一个独立的文件，医生给你治病的流程相当于函数。</p>
+<p>但是我们在程序中经常会遇到一些交叉的功能，比如医院的放射科，就会有内外科交叉。骨折了得去放射科拍片子，脑子里有肿瘤，也得去放射科拍片子。那么对于这种代码需要我们处理好内外的逻辑，不要乱七八糟的，也不要一股脑全放到一个地方。当然实际情况当然没有没有那么理想，这就需要你自己思考，仔细斟酌，找到最优解。</p>
+</blockquote>
+<h2 id="_19">变量</h2>
+<ul>
+<li>
+<p>所有局部变量哪里用在哪里声明。<strong>不允许使用未定义初值的变量</strong></p>
+</li>
+<li>
+<p>如果初值可以确定，写在一行上，不要分开写：<code>xxxStatus_t xxx_status = get_xxx_status(xxx);</code></p>
+</li>
+<li>
+<p>不确定初值的变量给<code>0</code>或<code>1</code>，不确定初值的指针给<code>NULL</code>，不确定的结构体变量给<code>{0}</code></p>
+</li>
+<li>
+<p>不能让变量的作用域超出它的实际作用范围，比如一个变量就在<code>if</code>条件成立里用，你就不应该声明在<code>if</code>外。<strong>尤其是对于循环变量<code>i, j, k</code></strong>，如果只是单纯的下标意义，在<code>for</code>里面声明并定义，不要在外边声明，也就是：<code>for (int i = 0, i &lt; count; i++)</code></p>
+</li>
+<li>
+<p>如果一个全局变量只有一个文件使用，尽量加<code>static</code>修饰符，这样能避免其他人在其他文件调用本文件的变量，产生预期之外的后果。<strong>全局变量如果不加<code>static</code>，整个程序是可以访问的，任何一个地方的<code>extern</code>声明都可以访问到这个变量。</strong></p>
+</li>
+<li>
+<p>对于只用写入一次初值的变量，尽量加<code>const</code>修饰符，这样能够避免其他人乱改变量的值产生预期之外的后果。</p>
+</li>
+</ul>
+<blockquote>
+<p>一个有趣的冷知识，我们写的程序大部分变量，大多只是给了一次初值后再没变过。但大量的<code>const</code>修饰符势必会造成阅读负担，因此对于一些重要的变量考虑是否加<code>const</code>修饰符是非常有必要的，这样就不用担心变量在某个隐蔽的角落被重新赋值。</p>
+</blockquote>
+<pre><code class="language-C">uint32_t arr[4];
+int16_t foo;
+/* 不允许未定义就使用arr数组 */
+printf(&quot;%d&quot;, a[1]);
+/* 不允许使用未定义的变量 */
+int16_t bar = foo + 1;
+
+/* 对于不确定内容的数组, 使用memset初始化 */
+memset(arr, 0, sizeof(arr));
+/* 申请堆内存时, 使用calloc可以将申请的内存设置为零 */
+uint16_t *new_data = (uint16_t *)calloc(sizeof(uint16_t) * MAX_LEN);
+</code></pre>
+<h2 id="_20">复杂数据类型</h2>
+<ul>
+<li>对于结构体或者联合体，除非不公开，只用来声明一个或几个变量，否则<strong>统一使用<code>typedef</code>定义名称</strong>，并结尾带<code>_t</code>后缀</li>
+</ul>
+<pre><code class="language-C">/* 正确写法 */
+typedef struct foo {   /* 此处foo可写可不写, 如果有像下面这样需要引用该结构体指针的那必须写 */
+    struct foo *next;  /*!&lt; next item */
+    int index;         /*!&lt; index of item */
+    uint8_t flag;      /*!&lt; flag of item */
+    ...
+} foo_t;               /* 使用_t后缀 */
+foo_t foo_obj;         /* 定义结构体变量 */
+
+/* 错误写法 */
+struct foo {
+    struct foo *next;  /*!&lt; next item */
+    int index;         /*!&lt; index of item */
+    uint8_t flag;      /*!&lt; flag of item */
+    ...
+};
+sturct foo foo_obj;         /* 定义结构体变量 */
+
+/* 特殊情况, 只声明一个或几个结构体变量, 这种不用typedef名词 */
+/* 如果内部使用考虑是否需要static修饰符, 加在struct前面 */
+struct foo {
+    int index_of_foo;      /*!&lt; 索引 */
+    data_t data_of_foo;    /*!&lt; 数据 */
+    ...
+} foo_variable_1, foo_variable_2 ... ;
+</code></pre>
+<ul>
+<li>
+<p>对于枚举，枚举成员使用大写（当然某些情况下可以使用小写）</p>
+</li>
+<li>
+<p>与宏定义类似，如果只用来列举数据，比如数组下标，那么可以不定义名称</p>
+</li>
+<li>
+<p>枚举类型可以用来作为参数或者返回值。枚举成员一行只写一个成员，不要堆在一行上。</p>
+</li>
+</ul>
+<pre><code class="language-C">/**
+ * @brief GPIO电平定义
+ */
+typedef enum {
+    GPIO_PIN_RESET = 0x00U,
+    GPIO_PIN_SET
+} GPIO_PinState_t;
+
+/**
+ * @brief 状态定义
+ */
+typedef enum {
+    HAL_OK = 0x00U,
+    HAL_ERROR,
+    HAL_BUSY,
+    HAL_TIMEOUT
+} HAL_Status_t;
+
+/* 不要写成这样, 成员不换行 */
+typedef enum {
+    HAL_OK = 0x00U, HAL_ERROR, HAL_BUSY, HAL_TIMEOUT
+} HAL_Status_t;
+
+/**
+ * @brief HAL写入GPIO电平
+ * 
+ * @param GPIOx GPIO端口
+ * @param GPIO_Pin GPIO引脚
+ * @param PinState 写入电平
+ * @return `HAL_Status_t` 是否写入成功
+ * @note 实际HAL库逻辑并非这样, 只是举个例子
+ */
+HAL_Status_t HAL_GPIO_Write_Pin(GPIO_t *GPIOx, uint16_t GPIO_Pin,
+                                GPIO_PinState_t PinState) {
+    assert_param(IS_GPIO_PIN(GPIO_Pin));
+    ...
+    GPIOx-&gt;ODR = GPIO-&gt;IDR | (GPIO_PinState &lt;&lt; GPIO_Pin);
+    if (GPIOx-&gt;IDR == GPIOx-&gt;ODR) {
+        return HAL_OK;
+    } else {
+        return HAL_ERROR
+    }
+}
+
+/* 纯下标定义, 可以不用typedef定义名称 */
+enum {
+    LAST = 0x00U,
+    NOW,
+    NEXT
+};
+array[LAST] = ...;
+</code></pre>
+<h2 id="_21">数组与指针</h2>
+<ul>
+<li>对于指针，<strong><code>*</code>放在变量名的一侧</strong>，即<code>char *pointer = NULL</code>，而非类型的一侧，即<code>char* pointer = NULL</code>。放在右边是要注意下面的情况：</li>
+</ul>
+<pre><code class="language-C">int* p, q; /* 当这样声明的时候p是int指针, q是int变量, 相当于: int* p; int q; */
+/* 所以采用下面的方式, 看起来统一 */
+int *p, *q;
+</code></pre>
+<ul>
+<li>
+<p>不建议一行代码声明多个变量，因此尽量避免像上面这样即声明指针又声明变量。</p>
+</li>
+<li>
+<p>申请的内存必须及时释放，否则会造成内存泄漏。</p>
+</li>
+<li>
+<p><strong>指针嵌套（比如指向指针<code>int*</code>的指针<code>int**</code>）最多三层，数组最多三维数组</strong></p>
+</li>
+<li>
+<p><strong>声明数组必须初始化，如果不确定给0值。不允许出现未初始化的数组</strong></p>
+</li>
+<li>
+<p>对于结构体、联合体这种复杂数据类型，函数之间传递时尽量使用指针，以减少内存开销，以及避免可能产生的内存泄漏。</p>
+</li>
+</ul>
+<blockquote>
+<p>HAL库中的句柄就是一个结构体。对于需要传递句柄变量的地方，尽量使用指针，不要使用整个句柄变量。在HAL库中，如果需要判断某个句柄指针的具体外设，使用<code>handler-&gt;Instance</code>，不要判断指针是否与某个外设的句柄地址是否相等，这样如果某些地方时直接传入的句柄变量而不是句柄指针，存在判断失效的隐患。具体见<a href="https://flowus.cn/deadline039/share/8e34495c-108d-49d5-aaab-1bf61e2bbe8c#1f32f542-a4ac-458b-bbf2-64e847dd8d39">HAL库句柄</a>。</p>
+</blockquote>
+<h2 id="_22">宏定义</h2>
+<ul>
+<li>
+<p>代码中也不要用过多的宏定义，根据实际情况适当裁剪，及时清理未使用的函数和变量，而不是依赖宏定义</p>
+</li>
+<li>
+<p>续行符右对齐</p>
+</li>
+<li>
+<p>宏定义如果有<code>#if</code>嵌套，不缩进</p>
+</li>
+<li>
+<p>使用<code>#define</code>定义常量时，常量值自动对齐</p>
+</li>
+</ul>
+<pre><code class="language-C">/* 不规范写法 */
+#define USE_FOO 0
+#define NOT_USE_BAR 1
+
+#if NOT_USE_BAR
+
+    #define IS_FOO
+void foo(void);
+
+#else  /* NOT_USE_BAR */
+
+    #define IS_BAR
+void bar(void);
+
+#define LED0(x) \
+    (x) ? HAL_GPIO_WritePin(LED0_PORT, LED0_PIN, GPIO_PIN_SET) \
+        : HAL_GPIO_WritePin(LED0_PORT, LED0_PIN, GPIO_PIN_RESET)
+
+#endif /* NOT_USE_BAR */
+
+/* 规范写法 */
+#define USE_FOO     0
+#define NOT_USE_BAR 1
+
+#if NOT_USE_BAR
+
+#define IS_FOO
+void foo(void);
+
+#else  /* NOT_USE_BAR */
+
+#define IS_BAR
+void bar(void);
+/* 最右边的反斜杠就是续行符, 右对齐 */
+#define LED0(x)                                                                \
+    (x) ? HAL_GPIO_WritePin(LED0_PORT, LED0_PIN, GPIO_PIN_SET)                 \
+        : HAL_GPIO_WritePin(LED0_PORT, LED0_PIN, GPIO_PIN_RESET)
+
+#endif /* NOT_USE_BAR */
+</code></pre>
+<p>VSCode和Keil可以折叠宏定义，这样未启用的宏定义可以不显示</p>
+<h2 id="goto">goto</h2>
+<ul>
+<li>
+<p>可以使用<code>goto</code>，<code>goto</code>作为函数退出时使用非常方便，Linux内核中也有不少代码用了<code>goto</code>。但请不要滥用</p>
+</li>
+<li>
+<p><code>goto</code>不要跨函数；使用<code>goto</code>不要形成循环；尽量往后跳转，不要跳转到前面。往前跳转容易形成潜在的逻辑错误。</p>
+</li>
+</ul>
+<p><img alt="image.png" src="image%201.png" /></p>
+<h2 id="_23">杂项</h2>
+<ul>
+<li>
+<p>不要使用魔法数字(Magic Number)，即突如其来的数字，意义不明，比如<code>int magic_number = 3;</code>你告诉我这个3是干什么的</p>
+</li>
+<li>
+<p>如果要使用常数尽量用宏定义，但是不要出现这种宏定义：<code>#define FIVE 5</code>，谁不知道FIVE是5啊，代码里不能直接写5吗</p>
+</li>
+<li>
+<p>不要对浮点数做相等或者不等判断，浮点数由于精度问题并不会按照我们预期的方式执行。很典型的例子，可以自己写个程序看一下<code>0.1 + 0.2 == 0.3</code>的值，你会发现这个条件的结果是0即<code>false</code></p>
+</li>
+<li>
+<p>注意强制类型转换，仔细思考这样做是否有问题</p>
+</li>
+</ul>
+<h1 id="_24">注释</h1>
+<p><strong>代码必须写注释，不写注释的都是</strong>。**</p>
+<p>注释使用<a href="https://www.doxygen.nl/index.html">doxygen</a>标准。行注释<code>//</code>用在注释代码上。doxygen支持<a href="https://www.markdownguide.org/">Markdown</a>语法</p>
+<p>doxygen的标签可以以<code>@</code>或者<code>\</code>开头，<strong>这里统一规定使用<code>@</code>作为标签开头</strong>。</p>
+<p>doxygen规定的标签可点击<a href="https://www.doxygen.nl/manual/commands.html">此处</a>查阅，如果标签是doxygen规定的，vscode会自动识别标签并显示相应的颜色。下面列举几个常用的，用法参照官方文档，或者下面的内容</p>
+<pre><code class="language-C">/**
+ * @arg         @attention  @author     @brief      @bug
+ * @copyright   @date       @def        @defgroup   @details
+ * @note        @param      @private    @public     @ref
+ * @return      @retval     @see        @todo       @version
+ * @warning
+ */
+</code></pre>
+<p>在VSCode中切换行注释的快捷键是<code>Ctrl + /</code>，按下后就会自动添加空格。切换块注释的快捷键是<code>Alt + Shift + A</code>，按下后前后也会自动加空格。我一般把这个快捷键改成<code>Alt + /</code>，在左下角齿轮，KeyBoard Shortcuts(键盘快捷键)，然后搜索<code>blockComment</code>，找到Toogle Block Comment(切换块注释)，点第二列的快捷键，按下你想要的快捷键，保存即可。如果快捷键冲突，可以先查找这个快捷键，解除后再录入新的快捷键。</p>
+<h2 id="_25">文件头</h2>
+<p>文件注释标准, 写明文件名<code>@file</code>, 作者<code>@author</code>, 简介<code>@brief</code>, 版本<code>@version</code>, 日期<code>@date</code>, 版权信息等。建议使用空格对齐（按一个Tab为4空格），看起来较为整齐。</p>
+<p>注意版本号的更新，对于开发初期的版本，主版本号使用0，更新副版本号；如果是较为稳定的发布版本，更新主版本号</p>
+<pre><code class="language-C">/**
+ * @file    commune.c
+ * @author  Deadline039
+ * @brief   通信代码
+ * @version 0.1
+ * @date    2023-11-05
+ * @note    遥控器发送的数据帧都为8个字节, 开头统一为0xFF, 结尾统一为0xCC
+ *          --------------------------------------------------------------------
+ *          遥控器数据帧格式:
+ *          0xFF, 0xAA(标识遥控器), x1, y1, x2, y2, keys, 0xCC
+ *          --------------------------------------------------------------------
+ *          握手数据帧格式:
+ *          0xFF, 'h'(标识握手), 'e', 'l', 'l', 'o', 0x00, 0xCC
+ *          主板回复格式
+ *          'O', 'K', 0x00, 0xCC
+ *          --------------------------------------------------------------------
+ *          发送key数据帧格式
+ *          0xFF, 0xFE(标识key), key, key, key, key, 0x00, 0xCC
+ *          --------------------------------------------------------------------
+ *          检查连接数据帧格式
+ *          0xFF, 0xFF(标识检验), 0x00, 0x00, 0x00, 0x00, 0x00, 0xCC
+ *          主板回复格式
+ *          key, key, key, key, 0x00, 0xCC
+ *******************************************************************************
+ *          CHECK_CONNECT宏用来定义是否进行连接检查, 0为不使用; 1为使用
+ *          如果不使用连接检查, 开机直接向主板发送遥控器数据
+ *
+ *          如果使用连接检查, 上电会持续发送握手数据帧, 等待主板回复OK
+ *          主板回复后, 向主板发送一个32位的key, 这个key是随机生成的
+ *          发送格式就是key数据帧格式
+ *
+ *          遥控器每发送20帧遥控器数据, 会发送一个检查连接数据帧,
+ *          主板将key发送给遥控器, 遥控器进行校验. 如果错误, 提示连接出错
+ */
+</code></pre>
+<h2 id="_26">函数</h2>
+<p>注明简介<code>@brief</code>, 参数<code>@param</code>, 有时还使用<code>@arg</code>来指定传入的参数值, 返回值<code>@retval, @return</code>等。参数作为输入<code>[in]</code>可以省略，作为输出需加<code>[out]</code>，C不支持引用参数，一般为指针</p>
+<p>每条列表项目可以不用空格对齐，<code>arg</code>与<code>param</code>前错开一个空格，但是如果一个列表内的内容要换行，对齐上一行的开头</p>
+<pre><code class="language-C">/**
+ * @brief Starts the TIM Input Capture measurement. 这里可以不与下面的retval对齐
+ * @param htim TIM Input Capture handle
+ * @param Channel TIM Channels to be enabled. This parameter can be one of the
+ *                following values: (这里换行了, 与上一行开头对齐)
+ *  @arg TIM_CHANNEL_1: TIM Channel 1 selected  开头与@param错开一个空格
+ *  @arg TIM_CHANNEL_2: TIM Channel 2 selected
+ *  @arg TIM_CHANNEL_3: TIM Channel 3 selected
+ *  @arg TIM_CHANNEL_4: TIM Channel 4 selected
+ * @retval HAL status
+ * @note 注意12行和13行之间不应该有空格
+ */
+HAL_StatusTypeDef HAL_TIM_IC_Start(TIM_HandleTypeDef *htim, uint32_t Channel) {
+    uint32_t tmpsmcr;
+    /* 双斜杠仅在注释代码时使用 */
+    // HAL_TIM_ChannelStateTypeDef channel_state = TIM_CHANNEL_STATE_GET(htim, Channel);
+    // HAL_TIM_ChannelStateTypeDef complementary_channel_state = TIM_CHANNEL_N_STATE_GET(htim, Channel);
+
+    /* Check the parameters */
+    assert_param(IS_TIM_CCX_INSTANCE(htim-&gt;Instance, Channel));
+    ...
+    /* Return function status */
+    return HAL_OK;
+}
+
+/**
+ * @brief 根据传感器数据获取实际位置
+ *
+ * @param[out] real_x x位置指针
+ * @param[out] real_y y位置指针
+ */
+void GetPosition(double* real_x, double* real_y) {
+    *real_x = ...;
+    *real_y = ...;
+}
+
+</code></pre>
+<p>如果函数使用的是标准的doxygen注释的，在vscode里鼠标放到一个函数上悬停会显示相关信息，输入参数时也会提示现在输入的是什么参数。空格不影响这里展示的内容，vscode会自动忽略空格。注意文件编码为UTF-8。</p>
+<p><img alt="image-20231022205719017.png" src="image-20231022205719017.png" /></p>
+<p><img alt="image-20231022205832560.png" src="image-20231022205832560.png" /></p>
+<h2 id="_27">结构体</h2>
+<p>结构体前注明简介，每个成员都说明作用，说明成员作用时使用<code>/*!&lt; xx */</code></p>
+<pre><code class="language-C">/**
+ * @brief  TIM Clear Input Configuration Handle Structure definition
+ */
+typedef struct {
+  uint32_t ClearInputState;      /*!&lt; TIM clear Input state
+                                      This parameter can be ENABLE or DISABLE */
+  uint32_t ClearInputSource;     /*!&lt; TIM clear Input sources
+                                      This parameter can be a value of @ref TIM_ClearInput_Source */
+  uint32_t ClearInputPolarity;   /*!&lt; TIM Clear Input polarity
+                                      This parameter can be a value of @ref TIM_ClearInput_Polarity */
+  uint32_t ClearInputPrescaler;  /*!&lt; TIM Clear Input prescaler
+                                      This parameter must be 0: When OCRef clear feature is used with ETR source, 
+                                      ETR prescaler must be off */
+  uint32_t ClearInputFilter;     /*!&lt; TIM Clear Input filter
+                                      This parameter can be a number between Min_Data = 0x0 and Max_Data = 0xF */
+} TIM_ClearInputConfigTypeDef;
+</code></pre>
+<h2 id="_28">模块</h2>
+<p>当一段代码是一个模块时可以用<code>defgroup</code>：</p>
+<pre><code class="language-C">/**
+ * @defgroup Moudle 1
+ * @{
+ */
+
+...    
+
+/**
+ * @}
+ */
+
+/* 也可以加一堆*来区分, 一行80个字符 */
+/*******************************************************************************
+ * @defgroup Moudle 2
+ * @{
+ */
+
+...
+
+/**
+ * @}
+ ******************************************************************************/
+
+</code></pre>
+<h2 id="_29">预编译命令</h2>
+<ul>
+<li>
+<p>预编译命令的<code>#else, #endif</code>必须在行末注释<code>#if</code>的条件，要不然一堆<code>#endif</code>更根本不知道是哪里的</p>
+</li>
+<li>
+<p>根据实际情况适当裁剪，及时清理未使用的函数和变量</p>
+</li>
+<li>
+<p>宏定义如果有<code>#if</code>嵌套，不缩进</p>
+</li>
+</ul>
+<p><img alt="image.png" src="image%202.png" /></p>
+<h2 id="_30">杂项</h2>
+<ul>
+<li>
+<p>不要过度注释，比如<code>key = key_scan(0);  /* 扫描按键 */</code>，这个函数一眼就知道是扫描按键的，没必要注释。正点原子的注释是为初学者考虑的，所以每行代码基本都会注释一下。</p>
+</li>
+<li>
+<p>代码里不要写无意义的注释。不要把注释写成英语句子的翻译，我们应该翻译的是代码中的逻辑，而不是翻译单词，这种注释没有意义</p>
+</li>
+<li>
+<p>对于函数或者文件来说，注释的主要目标是讲清楚这部分代码有什么功能，如何使用，最好将代码逻辑的解释放到具体的代码中，可以简单说一下运行流程。函数、文件的功能注释叫<code>brief</code>，而不是<code>details</code></p>
+</li>
+<li>
+<p>注释关键部分和难以理解的点必须注释，比如操作寄存器的代码，如果不查阅手册基本看不懂</p>
+</li>
+<li>
+<p>注意注释要和代码相符，不要复制粘贴的时候不改注释</p>
+</li>
+<li>
+<p>注释应该在代码的上一行或者行末，不应该在下一行，也不要有空行</p>
+</li>
+<li>
+<p>尚未实现完整功能，或者需要更进一步优化的代码，应使用<code>todo</code>；如果代码有bug，使用<code>bug</code>，其他tag用法参照doxygen官方文档</p>
+</li>
+</ul>
+<pre><code class="language-C">/* 注释应该在这里 */
+event_val |= event_bit;  /* 或者注释在这里 */
+/* 不应该在这里注释 */
+
+/* 这是说明第7行代码的注释, 第6行不应该空 */
+
+event_val &lt;&lt;= 1;
+
+/**
+ * @todo 此处判断逻辑应该优化
+ */
+if ((event_val &amp; 0x01) &amp;&amp; !(event_val &amp; 0x02)
+    || !(event_val &amp; 0x04) &amp;&amp; (event_val &amp; 0x08)) {
+    ...
+}
+
+/**
+ * @bug 这里的断言有时候会失效
+ */
+if (!event_val_assert(event_val)) {
+    ...
+}
+</code></pre>
+<h2 id="_31">自动生成注释</h2>
+<p>如果正确安装了EIDE且没有出错，那么扩展会自动安装Doxygen Documentation Generator扩展，如果没有，搜索扩展名称到商店自行安装。</p>
+<p><img alt="image.png" src="image%203.png" /></p>
+<p>我们不需要手动输入上面的一堆东西，扩展会自动帮我们生成，下面就来演示一下：</p>
+<p>文件头注释：当我们在一个<strong>新文件的第一行</strong>输入<code>/**</code>回车，就会自动帮我们生成文件头模板：</p>
+<p><img alt="PixPin_2024-02-10_12-50-04.gif" src="PixPin_2024-02-10_12-50-04.gif" /></p>
+<p>函数注释：输入<code>/**</code>回车，扩展会自动识别参数和返回值，我们只用输入内容就可以：</p>
+<p><img alt="PixPin_2024-02-10_13-14-57.gif" src="PixPin_2024-02-10_13-14-57.gif" /></p>
+<p>当然我们也可以自定义上面<code>file, author</code>的内容，具体位置如下：</p>
+<p><img alt="image.png" src="image%204.png" /></p>
+<h1 id="_32">文件编码</h1>
+<p>为避免同步仓库代码时产生乱码，导致一些不必要的问题，<strong>文件编码统一使用UTF-8</strong>。正点原子的代码全部用的是GB2312。</p>
+<p><strong>如果使用GB2312编码，vscode悬浮的提示会中文乱码。就比如刚才的函数提示</strong>。</p>
+<p>下面的Gif演示了如何修改编码。</p>
+<p><img alt="FileEncoding.gif" src="FileEncoding.gif" /></p>
+<p>如果打开文件中文乱码，点ReOpen With Encoding尝试编码即可，<strong>千万不要点成Save with Encoding，否则可能无法复原原本的内容</strong>。</p>
+<p>推荐大家安装GBK to UTF8 for vscode扩展，可以识别到大部分GBK编码的文件，而且可以批量转换编码。</p>
+<p><img alt="image.png" src="image%205.png" /></p>
+<p>XCOM不支持UTF-8编码，串口输出中文会乱码，因此这里推荐使用支持编码更多，功能更强大的<a href="https://github.com/Neutree/COMTool">COMTool</a>。使用教程见<a href="https://flowus.cn/e56cc288-2a3a-46fa-b025-552359f8c40c">此处</a>。</p>
+<h1 id="_33">段末换行符</h1>
+<p>换行符有两个，<code>CR(\r), LF(\n)</code>，<a href="https://zhuanlan.zhihu.com/p/380574688">具体参见此文章</a>。简单来说，在打字机时代，计算机还不能做文档处理的时候，想要换行进入下一个段落必须先按一下回车（Carriage Return, CR）让打字机的打印头回到最左边（写字都是从左往右写，段末就是最右边），然后再换行（Line Feed, LF）。但是到了计算机时代不需要回车换行了，只需要换行符就够了。但微软为了保留历史习惯，MS-DOS和Windows的默认换行符都是<code>CRLF</code>；Linux和Unix为了方便使用的是<code>LF</code>，macOS上也用的是<code>LF</code>。</p>
+<p>由于我们主要在Windows下做开发，因此<strong>换行符统一用<code>CRLF</code></strong>。</p>
+<p>点右下角的CRLF就可以更改段末换行符。</p>
+<p><img alt="image.png" src="image%206.png" /></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

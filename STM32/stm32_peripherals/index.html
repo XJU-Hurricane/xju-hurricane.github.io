@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh_CN" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Stm32 peripherals - XJU_Hurricane-docs</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">XJU_Hurricane-docs</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#adc-analog-digital-converter" class="nav-link">ADC, Analog Digital Converter, 模拟转数字</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#can-controller-area-network" class="nav-link">CAN, Controller Area Network, 控制区域网络</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#dac-digital-analog-converter" class="nav-link">DAC, Digital Analog Converter, 数字转模拟</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#dma-direct-memory-access" class="nav-link">DMA, Direct Memory Access, 直接存储器访问</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#exti-external-interruptevent-controller" class="nav-link">EXTI, EXTernal Interrupt/event controller, 外部中断/事件控制器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#flash-flash" class="nav-link">Flash, 内部Flash操作</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#fmcfsmc-flexible-static-memory-controller" class="nav-link">FMC/FSMC, Flexible (Static) Memory Controller, 灵活(静态)存储控制器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#gpio-general-purpose-input-output" class="nav-link">GPIO, General Purpose Input Output, 通用输入/输出</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#i2ciic-inter-integrated-circuit" class="nav-link">I2C(IIC), Inter-Integrated Circuit, 内部集成电路总线</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#i2s-inter-ic-sound-ic" class="nav-link">I2S, Inter-IC-Sound, 内部IC音频总线</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#iwdg-independent-watchdog" class="nav-link">IWDG, Independent WatchDoG， 独立看门狗</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#wwdg-windows-watchdog" class="nav-link">WWDG, Windows WatchDoG, 窗口看门狗</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#pwr-power-control" class="nav-link">PWR, PoWeR Control, 电源控制</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#rcc-reset-and-clock-controller" class="nav-link">RCC, Reset and Clock Controller, 复位和时钟控制器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#spi-serial-peripheral-interface" class="nav-link">SPI, Serial Peripheral Interface, 串行外设接口</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#tim-timer" class="nav-link">TIM, TIMer, 定时器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#uart-universal-asynchronous-receiver-transmitter" class="nav-link">UART, Universal Asynchronous Receiver Transmitter, 通用异步接收发送器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#usart-universal-synchronous-asynchronous-receiver-transmitter" class="nav-link">USART, Universal Synchronous Asynchronous Receiver Transmitter, 通用同步异步接收发送器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>包括<code>ADC, CAN, DAC, DMA, EXTI, FLASH, FMC(F429), FSMC(F103), GPIO, I2C, I2S, IWDG, PWR, RCC, SPI , TIM, UART, USART, WWDG</code>，掌握这些外设的用法就算入门STM32。每个外设的用法参照STM32 HAL库说明。</p>
+<p>下文的MCU指的就是单片机。</p>
+<h1 id="adc-analog-digital-converter">ADC, Analog Digital Converter, 模拟转数字</h1>
+<p>将模拟量转换为数字量，一般是电压量。设计电路时需要注意VREF。</p>
+<h1 id="can-controller-area-network">CAN, Controller Area Network, 控制区域网络</h1>
+<p>基本通信协议之一，控制电机多用这种协议。</p>
+<p>ST在2017年将HAL库的CAN重构过一次，因此需要特别注意旧版HAL库的代码需要定义<code>HAL_CAN_LEGACY_MODULE_ENABLED</code>宏才可使用旧版HAL库。新代码具体参照ST官方的Release Note。</p>
+<h1 id="dac-digital-analog-converter">DAC, Digital Analog Converter, 数字转模拟</h1>
+<p>一般用于输出模拟波形，如三角波、正弦波等。</p>
+<h1 id="dma-direct-memory-access">DMA, Direct Memory Access, 直接存储器访问</h1>
+<p>将数据从外设和内存之间传输，分为三个方向：外设到内存，内存到外设，内存到内存。</p>
+<p>DMA的传输是不需要CPU参与的，因此使用DMA可以降低CPU压力。一般高数据量传输需要用DMA。如果不使用DMA，频繁的中断请求会占用较高的CPU资源。</p>
+<h1 id="exti-external-interruptevent-controller">EXTI, EXTernal Interrupt/event controller, 外部中断/事件控制器</h1>
+<p>EXTI处理来自外部的中断，比如IO口电平变化，分上升沿触发和下降沿触发。具体参照STM32官方手册。</p>
+<h1 id="flash-flash">Flash, 内部Flash操作</h1>
+<p>stm32的flash地址起始于<code>0x0800 0000</code>，结束地址是<code>0x0800 0000</code>加上芯片实际的flash大小，不同的芯片flash大小不同。如果代码量较小，没有外挂flash芯片时，可以利用芯片内部的flash存储些数据。需要注意不要乱写入数据，否则代码可能会被破坏。</p>
+<p>片上Flash和RAM分配参见datasheet。</p>
+<h1 id="fmcfsmc-flexible-static-memory-controller">FMC/FSMC, Flexible (Static) Memory Controller, 灵活(静态)存储控制器</h1>
+<p>FMC/FSMC主要用于并行数据传输上，比如LCD, SDRAM, NAND/Nor Flash等。</p>
+<p>STM32F103只有100Pin以上的芯片才支持FSMC。F429/H7不支持FSMC，只支持FMC，添加FSMC的文件编译会报错。</p>
+<p>Static是指的SRAM内存，还有一种内存是DRAM。由于存储原理不同，DRAM内存需要不断刷新才能保持数据，SRAM则不用。</p>
+<h1 id="gpio-general-purpose-input-output">GPIO, General Purpose Input Output, 通用输入/输出</h1>
+<p>基本IO口控制。控制外围设备基本都通过GPIO控制。需要注意GPIO的复用功能，设计硬件时要注意IO复用。</p>
+<h1 id="i2ciic-inter-integrated-circuit">I2C(IIC), Inter-Integrated Circuit, 内部集成电路总线</h1>
+<p>常用通讯协议之一，不少芯片都通过I2C接口与MCU通信。可以使用IO口模拟I2C，也可以使用STM32自带的库。</p>
+<h1 id="i2s-inter-ic-sound-ic">I2S, Inter-IC-Sound, 内部IC音频总线</h1>
+<p>飞利浦公司设计的数字音频数据传输标准，可以使用它来驱动外部音频芯片，如WM8978。</p>
+<h1 id="iwdg-independent-watchdog">IWDG, Independent WatchDoG， 独立看门狗</h1>
+<p>独立看门狗一般用来检测和解决由程序引起的故障，比如一个程序正常运行的时间是50ms， 在运行完这个段程序之后紧接着进行喂狗，我们设置独立看门狗的定时溢出时间为60ms，比我们需要监控的程序50ms多一点， 如果超过60ms还没有喂狗，那就说明我们监控的程序出故障了，跑飞了，那么就会产生系统复位，让程序重新运行。</p>
+<h1 id="wwdg-windows-watchdog">WWDG, Windows WatchDoG, 窗口看门狗</h1>
+<p>WWDG一般被用来监测，由外部干扰或不可预见的逻辑条件造成的应用程序背离正常的运行序列而产生的软件故障。比如一个程序段正常运行的时间是50ms， 在运行完这个段程序之后紧接着进行喂狗，如果在规定的时间窗口内还没有喂狗，那就说明我们监控的程序出故障了，跑飞了，那么就会产生系统复位，让程序重新运行。</p>
+<h1 id="pwr-power-control">PWR, PoWeR Control, 电源控制</h1>
+<p>控制STM32内部电源。可以让MCU进入低功耗模式，包括睡眠(Sleep)、停机(Stop)和待机(Standby)模式，STM32L系列提供的低功耗模式更多。当MCU空闲时可以进入低功耗模式，节省电量。</p>
+<p>STM32还可以检测VDD电压，当低于PVD阈值时触发中断，说明可能突然掉电了，执行紧急关闭任务。</p>
+<h1 id="rcc-reset-and-clock-controller">RCC, Reset and Clock Controller, 复位和时钟控制器</h1>
+<p>时钟是MCU基本组成之一，可以把时钟比喻成人的心跳，MCU每一个指令都由时钟调控。RCC是控制外设、内核的基本控制器之一，所有外设都由RCC控制。</p>
+<p>时钟分配参见STM32官方手册。</p>
+<h1 id="spi-serial-peripheral-interface">SPI, Serial Peripheral Interface, 串行外设接口</h1>
+<p>基本通信协议之一，不少芯片都通过SPI和MCU通信。可以使用IO口模拟SPI，也可以用STM32自带的库。</p>
+<h1 id="tim-timer">TIM, TIMer, 定时器</h1>
+<p>定时器最基本的功能就是每隔一个固定时间运行一段代码，除此之外还可以配置PWM输出、输入捕获、脉冲测量、AB相编码器输入等功能。定时器分基本定时器、通用定时器、高级定时器，每种定时器的功能、计数范围都不一样，参考STM32官方手册。</p>
+<h1 id="uart-universal-asynchronous-receiver-transmitter">UART, Universal Asynchronous Receiver Transmitter, 通用异步接收发送器</h1>
+<p>MCU通信的基本方式之一，可以用它在不同单片机、不同芯片、电脑通信，俗称串口。可以与DMA结合提高传输可靠性。</p>
+<h1 id="usart-universal-synchronous-asynchronous-receiver-transmitter">USART, Universal Synchronous Asynchronous Receiver Transmitter, 通用同步异步接收发送器</h1>
+<p>与UART的区别就是多了同步，会等待另一个终端开始接收才会发送，也就是CTS RTS。而UART不会管另一个终端有没有准备好接收，直接发送数据。STM32的串口还有CK时钟线。不过一般多用UART。</p>
+<p>I2C，SPI都是带一根时钟线的，这两个协议可以保证数据传输是同步的。因此它们没有像串口一样分同步或者异步。</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
